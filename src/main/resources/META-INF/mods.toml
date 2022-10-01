@@ -1,0 +1,29 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="All rights reserved"
+
+
+[[mods]]
+modId="halloween_mood"
+version="${file.jarVersion}"
+displayName="Halloween Mood"
+#logoFile="examplemod.png"
+credits=""
+authors="TATHAN"
+description='''
+This mod adds a Halloween/Autumn mood to Minecraft.
+'''
+
+[[dependencies.halloween_mood]]
+    modId="forge"
+    mandatory=true
+    versionRange="[43,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.halloween_mood]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.2,1.20)"
+    ordering="NONE"
+    side="BOTH"
