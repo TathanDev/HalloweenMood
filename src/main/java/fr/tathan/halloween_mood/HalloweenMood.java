@@ -2,6 +2,8 @@ package fr.tathan.halloween_mood;
 
 import com.mojang.logging.LogUtils;
 import fr.tathan.halloween_mood.configs.CommonConfig;
+import fr.tathan.halloween_mood.registries.ItemsRegistry;
+import fr.tathan.halloween_mood.registries.TabsRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.Blocks;
@@ -29,9 +31,13 @@ public class HalloweenMood {
 
     public HalloweenMood()
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.addListener(this::commonSetup);
+        bus.addListener(this::commonSetup);
+
+        ItemsRegistry.ITEMS.register(bus);
+
+
 
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -58,8 +64,13 @@ public class HalloweenMood {
 
 
 
+
         }
 
+        //TODO: TRY ON SERVER
+        //TODO: MAKE A COMPAT WITH THE OTHER MODS (Like Beyond Earth)
+        //TODO: Candies (Speed, Health)
+        //TODO TRADE WITH VILLAGERS FOR CANDIES
 
     }
 }
