@@ -3,6 +3,7 @@ package fr.tathan.halloween_mood;
 import com.mojang.logging.LogUtils;
 import fr.tathan.halloween_mood.configs.CommonConfig;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
+import fr.tathan.halloween_mood.registries.SoundsRegistry;
 import fr.tathan.halloween_mood.registries.TabsRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.GameType;
@@ -37,6 +38,9 @@ public class HalloweenMood {
 
         ItemsRegistry.ITEMS.register(bus);
 
+        SoundsRegistry.SOUNDS.register(bus);
+
+
 
 
 
@@ -67,10 +71,19 @@ public class HalloweenMood {
 
         }
 
-        //TODO: TRY ON SERVER
-        //TODO: MAKE A COMPAT WITH THE OTHER MODS (Like Beyond Earth)
-        //TODO: Candies (Speed, Health)
-        //TODO TRADE WITH VILLAGERS FOR CANDIES
+        /**
+         *TODO
+         * Change the sugar cane texture
+         * Make the Moon less orange
+         * REWORK "FEAR" SYSTEM
+         * RANDOM CANDY
+         * STRUCTURES (BigPumpkin)
+         * MAKE A COMPAT WITH THE OTHER MODS (Like Beyond Earth)
+         * TRADE WITH VILLAGERS FOR CANDIES ✅
+         * Candies (Speed, Health) ✅
+         * TRY ON SERVER ✅
+         * Capabilities/command for HalloweenMood ✅
+         */
 
     }
 }

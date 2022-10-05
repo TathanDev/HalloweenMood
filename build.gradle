@@ -3,6 +3,8 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id "org.spongepowered.mixin" version "0.7-SNAPSHOT"
+
 
 }
 
@@ -28,6 +30,8 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             property 'forge.enabledGameTestNamespaces', 'halloween_mood'
+            arg "-mixin.config=halloween_mood.mixin.json"
+
 
             mods {
                 halloween_mood {
@@ -44,6 +48,8 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             property 'forge.enabledGameTestNamespaces', 'halloween_mood'
+            arg "-mixin.config=halloween_mood.mixin.json"
+
 
             mods {
                 halloween_mood {
@@ -60,6 +66,8 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             property 'forge.enabledGameTestNamespaces', 'halloween_mood'
+            arg "-mixin.config=halloween_mood.mixin.json"
+
 
             mods {
                 halloween_mood {
@@ -76,6 +84,8 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             args '--mod', 'halloween_mood', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            arg "-mixin.config=halloween_mood.mixin.json"
+
 
             mods {
                 halloween_mood {
@@ -86,13 +96,29 @@ minecraft {
     }
 }
 
+mixin {
+    add sourceSets.main, "halloween_mood.mixin-refmap.json"
+}
+
+
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+
+
+
+
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.1.32'
+
+    if (System.getProperty("idea.sync.active") != "true") {
+        annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
+    }
+
+
+}
 
     jar {
         manifest {
@@ -126,4 +152,3 @@ dependencies {
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
     }
-}

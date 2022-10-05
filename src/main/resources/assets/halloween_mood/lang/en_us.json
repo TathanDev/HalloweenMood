@@ -5,6 +5,10 @@
   "item.halloween_mood.night_vision_candy": "Fire Candy",
   "item.halloween_mood.fire_resistance_candy": "Fire Candy",
 
+  "message.halloween_mood.difficulty.true": "Now you are in the Halloween mood!",
+  "message.halloween_mood.difficulty.false": "It's already finished?!",
+
+
 
 
   "itemGroup.halloween_tab": "Halloween Mood"

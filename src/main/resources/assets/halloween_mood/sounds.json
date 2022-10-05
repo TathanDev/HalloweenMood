@@ -1,0 +1,10 @@
+{
+  "demonic_laugh": {
+    "sounds": [
+      {
+        "name": "halloween_mood:demonic_laugh",
+        "stream": false
+      }
+    ]
+  }
+}
