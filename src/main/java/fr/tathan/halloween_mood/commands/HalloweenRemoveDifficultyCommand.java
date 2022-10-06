@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.biome.Biome;
 
 public class HalloweenRemoveDifficultyCommand {
 
@@ -32,6 +33,9 @@ public class HalloweenRemoveDifficultyCommand {
         player.displayClientMessage(DIFFICULTY_FALSE, false);
         player.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
         level.setDayTime(1000);
+        level.setThunderLevel(0.0F);
+
+
 
 
 

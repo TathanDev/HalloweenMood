@@ -15,7 +15,7 @@ public class HealthCandy extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving) {
-        pEntityLiving.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 500, 0));
+        pEntityLiving.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 450, 0));
 
 
         return super.finishUsingItem(pStack, pLevel, pEntityLiving);

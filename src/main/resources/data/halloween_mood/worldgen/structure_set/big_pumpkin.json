@@ -1,12 +1,12 @@
 {
   "structures": [
     {
-      "structure": "halloween_mood:forest_camp",
+      "structure": "halloween_mood:big_pumpkin",
       "weight": 1
     }
   ],
   "placement": {
-    "salt": 16422397588036474,
+    "salt": 1642136474,
 
     "spacing": 20,
 

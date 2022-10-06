@@ -1,18 +1,18 @@
 {
   "type": "minecraft:jigsaw",
 
-  "start_pool": "halloween_mood:forest_camp/start_pool",
+  "start_pool": "halloween_mood:big_pumpkin/start_pool",
 
-  "size": 1,
+  "size": 2,
 
   "max_distance_from_center": 80,
 
-  "biomes": "#halloween_mood:has_structure/forest_camp",
+  "biomes": "#halloween_mood:has_structure/big_pumpkin",
 
   "step": "surface_structures",
 
   "start_height": {
-    "absolute": 1
+    "absolute": 0
   },
 
   "project_start_to_heightmap": "WORLD_SURFACE_WG",

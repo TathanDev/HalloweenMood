@@ -73,16 +73,20 @@ public class HalloweenMood {
 
         /**
          *TODO
-         * Change the sugar cane texture
-         * Make the Moon less orange
          * REWORK "FEAR" SYSTEM
-         * RANDOM CANDY
-         * STRUCTURES (BigPumpkin)
-         * MAKE A COMPAT WITH THE OTHER MODS (Like Beyond Earth)
+         * BETTER TEXTURES FOR CANDIES
+         * RANDOM CANDY ITEM
+         * Change Main Menu (Take Screenshots etc...)
+         * MAKE A COMPAT WITH THE OTHER MODS (Patchouli)
+         * A WAY TO GET OUT THE PUMPKIN
+         * ----------------------Finished------------------------
          * TRADE WITH VILLAGERS FOR CANDIES ✅
          * Candies (Speed, Health) ✅
          * TRY ON SERVER ✅
          * Capabilities/command for HalloweenMood ✅
+         * Change the sugar cane texture ✅
+         * STRUCTURES (BigPumpkin) ✅
+         * Make the Moon less orange ✅
          */
 
     }

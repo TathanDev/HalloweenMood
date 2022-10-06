@@ -15,7 +15,7 @@ public class FireResistanceCandy extends Item {
 
     @Override
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving) {
-        pEntityLiving.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 500, 0));
+        pEntityLiving.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 450, 0));
 
 
         return super.finishUsingItem(pStack, pLevel, pEntityLiving);

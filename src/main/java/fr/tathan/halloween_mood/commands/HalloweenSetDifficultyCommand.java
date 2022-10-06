@@ -12,6 +12,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -33,6 +34,7 @@ public class HalloweenSetDifficultyCommand {
 
         LevelDifficulty levelDifficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new CommandSyntaxException(null, null));
         levelDifficulty.setHalloween();
+        level.setThunderLevel(1.0F);
 
 
         ItemStack PUMPKIN = new ItemStack(Items.CARVED_PUMPKIN);
@@ -40,13 +42,16 @@ public class HalloweenSetDifficultyCommand {
         PUMPKIN.enchant(Enchantments.BINDING_CURSE, 1);
         player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
 
+        if(level.getAllEntities() instanceof Player player1) {
+            player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
+
+        }
 
         player.displayClientMessage(DIFFICULTY_TRUE, false);
 
         level.setDayTime(14000);
 
         level1.playSound(player, player.blockPosition(), SoundsRegistry.DEMONIC_LAUGH.get(), player.getSoundSource(), 1.0F, 1.0F);
-        //TODO: TEST WITH THE level1 variable :))))
 
 
         return 0;

@@ -61,23 +61,18 @@ public class Events {
         PUMPKIN.enchant(Enchantments.BINDING_CURSE, 1);
 
 
-        /**
-         * No Needed enymore because of the config
-         */
-        /**
-        if(CommonConfig.HALLOWEEN_MOD.get()) {
-        if (!level.isClientSide) {
-            if (entity instanceof ServerPlayer player) {
-                if(player.getSlot(103).get().isEmpty() && !player.isCreative()) {
-                    player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
-                        }
+
+        if(level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
+            if (!level.isClientSide) {
+                if (entity instanceof ServerPlayer player) {
+                    if (player.getSlot(103).get().isEmpty() && !player.isCreative()) {
+                        player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
                     }
-
                 }
-            }
-         */
 
+            }
         }
+    }
 
     @SubscribeEvent
     public static void TickEvent(TickEvent.PlayerTickEvent event) {
@@ -86,9 +81,11 @@ public class Events {
         Player player = event.player;
         Level level = player.getLevel();
         BlockPos pos = player.blockPosition();
+        LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
 
-        level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).ifPresent(difficulty -> {
-            if (difficulty.isHalloween()) {
+
+       if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
+           if (difficulty.isHalloween()) {
                 if (level.isNight()) {
                     if (player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ZOMBIE) && !player.isCreative()) {
                         if (player.getBlockStateOn().getLightEmission() <= 2) {
@@ -99,7 +96,7 @@ public class Events {
                 }
             }
 
-        });
+        }
 
     }
 
@@ -134,11 +131,11 @@ public class Events {
 
     @SubscribeEvent
     public static void onAttachCapabilitiesLevel(AttachCapabilitiesEvent<Level> event) {
-        if(!event.getObject().getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
+        if (!event.getObject().getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
             event.addCapability(new ResourceLocation(HalloweenMood.MODID, "level_difficulty"), new LevelDifficultyProvider());
         }
-    }
 
+    }
     @SubscribeEvent
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event){
         event.register(LevelDifficulty.class);
@@ -154,7 +151,6 @@ public class Events {
     }
 
 
-    public static final Component DEBUG = tl(".debug");
 
 
     public static Component tl(String text) {

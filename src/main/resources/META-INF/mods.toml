@@ -1,17 +1,18 @@
 modLoader="javafml"
 loaderVersion="[43,)"
-license="All rights reserved"
+license="Hummmm"
 
 
 [[mods]]
 modId="halloween_mood"
 version="${file.jarVersion}"
 displayName="Halloween Mood"
-#logoFile="examplemod.png"
+#logoFile="logo.png"
 credits=""
 authors="TATHAN"
 description='''
-This mod adds a Halloween/Autumn mood to Minecraft.
+This mod adds a Halloween/Autumn mood to Minecraft !
+If you are brave enough, you can turn the halloween difficulty on...
 '''
 
 [[dependencies.halloween_mood]]

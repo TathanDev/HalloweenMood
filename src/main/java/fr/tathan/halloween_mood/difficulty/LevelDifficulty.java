@@ -14,7 +14,7 @@ public class LevelDifficulty {
         this.isHalloween = true;
     }
 
-    /** Don't mind the name of the variable, it's just for fun*/
+    /** Don't mind the name of the variable, it's just for fun */
 
     public void removeHalloween() {
         this.isHalloween = false;

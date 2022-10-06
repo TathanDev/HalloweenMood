@@ -24,6 +24,10 @@ public class ItemsRegistry {
             () -> new HealthCandy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()).stacksTo(16)));
 
 
+    public static final RegistryObject<Item> RANDOM_CANDY = ITEMS.register("random_candy",
+            () -> new HealthCandy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(16).durability(1)));
+
+
 
 
 
