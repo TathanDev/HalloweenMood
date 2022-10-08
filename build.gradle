@@ -9,7 +9,7 @@ plugins {
 
 version = '1.0'
 group = 'fr.tathan.halloween_mood' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'halloween_mood'
+//archivesBaseName = 'halloween_mood'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -29,6 +29,9 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             property 'forge.enabledGameTestNamespaces', 'halloween_mood'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
 
 
             mods {
@@ -97,9 +100,18 @@ minecraft {
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
+repositories {
+
+    maven { url 'https://maven.blamejared.com' }
+
+}
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.1.32'
+
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_mc_version}-${patchouli_version}:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_mc_version}-${patchouli_version}")
+
 
 }
 

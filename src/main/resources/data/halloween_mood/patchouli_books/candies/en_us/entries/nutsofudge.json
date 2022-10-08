@@ -1,0 +1,13 @@
+{
+  "name": "Nutsofudge",
+  "icon": "halloween_mood:speed_candy",
+  "category": "halloween_mood:candies",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "halloween_mood:speed_candy",
+      "link_recipe": false,
+      "text": "This is the most delight fudge of all time ! But, that it ? No! It's also a speed candy ! It's a little bit like the speed potion, but it's a candy ! (so it's better)"
+    }
+  ]
+}

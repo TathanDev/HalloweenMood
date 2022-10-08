@@ -1,16 +1,23 @@
 {
-
-  "item.halloween_mood.speed_candy": "Speed Candy",
-  "item.halloween_mood.health_candy": "Health Candy",
+  "item.halloween_mood.speed_candy": "Nutsofudge",
+  "item.halloween_mood.health_candy": "Tasty Gelmints",
   "item.halloween_mood.night_vision_candy": "Fire Candy",
-  "item.halloween_mood.fire_resistance_candy": "Fire Candy",
-
+  "item.halloween_mood.fire_resistance_candy": "Red Unicorn Lolipop",
   "message.halloween_mood.difficulty.true": "Now you are in the Halloween mood!",
   "message.halloween_mood.difficulty.false": "It's already finished?!",
+  "message.halloween_mood.error.patchouli": "You need to use the Patchouli mod to use this book!",
 
+  "itemGroup.halloween_tab": "Halloween Mood",
+  "book.halloween_mood.candies.name": "The Candies Book",
+  "book.halloween_mood.candies.landing_text": "Welcome to the Candies Book!$(br)It's a little bit like the dream book's of all the children.",
+  "book.halloween_mood.candies.category": "The Candies",
+  "book.halloween_mood.candies.test": "You are in a forest. You are lost. You are hungry. You are thirsty. You are tired. You are scared. You are alone. You are in the lava. But, you have a Red Unicorn Lolipop ! You eat it and you can now swim like a fish in the lava !",
 
+  "halloween.tip.a_lot_of_candies.title": "A lot of candies",
+  "halloween.tip.a_lot_of_candies": "There is a lot of candies !",
 
+  "halloween.tip.halloween_gamemode.title": "Halloween Difficulty",
+  "halloween.tip.halloween_gamemode": "Want more difficulties ? Try the Halloween Gamemode !"
 
-  "itemGroup.halloween_tab": "Halloween Mood"
 
 }

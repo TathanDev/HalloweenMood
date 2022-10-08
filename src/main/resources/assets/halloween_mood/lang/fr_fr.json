@@ -1,0 +1,22 @@
+{
+  "item.halloween_mood.speed_candy": "Nutsofudge",
+  "item.halloween_mood.health_candy": "Tasty Gelmints",
+  "item.halloween_mood.night_vision_candy": "Fire Candy",
+  "item.halloween_mood.fire_resistance_candy": "Red Unicorn Lolipop",
+  "message.halloween_mood.difficulty.true": "Maintenant vous êtes en mode Halloween!",
+  "message.halloween_mood.difficulty.false": "C'est déja finit?!",
+  "message.halloween_mood.error.patchouli": "Vous devez avoir Patchouli pour utiliser cet item!",
+
+  "itemGroup.halloween_tab": "Halloween Mood",
+  "book.halloween_mood.candies.name": "Le Livre des Bonbons",
+  "book.halloween_mood.candies.landing_text" : "Bienvenue dans le livre des bonbons!$(br)C'est un peu comme le livre de rêves de tous les enfants.",
+  "book.halloween_mood.candies.category": "The Candies",
+
+  "halloween.tip.a_lot_of_candies.title": "Beaucoup de Bonbons",
+  "halloween.tip.a_lot_of_candies": "Il y a beaucoup de Bonbons avec tous des effets differents !",
+
+  "halloween.tip.halloween_gamemode.title": "Difficulté Halloween",
+  "halloween.tip.halloween_gamemode": "Vous voulez plus de difficultés ? Essayez le gamemode Halloween !"
+
+
+}

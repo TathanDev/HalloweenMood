@@ -1,0 +1,7 @@
+{
+  "name":"book.halloween_mood.candies.name",
+  "landing_text":"book.halloween_mood.candies.landing_text",
+  "pamphlet": true,
+  "book_texture": "halloween_mood:textures/gui/candies_book.png",
+  "show_progress": false
+}

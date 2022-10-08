@@ -1,0 +1,13 @@
+{
+  "name": "Tasty Gelmints",
+  "icon": "halloween_mood:health_candy",
+  "category": "halloween_mood:candies",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "halloween_mood:health_candy",
+      "link_recipe": false,
+      "text": "Vous êtes en retard à un rendez-vous. Tu sautes dans ta voiture mais, SURPRISE ! Tu ne t'es pas brossé les dents ! Et comme toute personne raisonnable, tu ne veux pas embrasser ton rendez-vous avec une mauvaise haleine. Alors, tu manges un Tasty Gelmint ! Et tu es prêt à partir ! Mais ce n'est pas tout, vous avez aussi un peu de santé !"
+    }
+  ]
+}

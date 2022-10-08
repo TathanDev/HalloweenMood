@@ -1,6 +1,9 @@
 package fr.tathan.halloween_mood.items.candies;
 
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,9 +21,8 @@ public class RandomCandy extends Item {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving) {
+    public InteractionResultHolder<ItemStack> use(Level level, Player playerIn, InteractionHand handIn) {
 
-        if (pEntityLiving instanceof Player player) {
 
             Random rand = new Random();
             int random_candy = rand.nextInt(4);
@@ -42,13 +44,10 @@ public class RandomCandy extends Item {
 
 
 
-            player.addItem(surprise_candy);
-
-        }
+            playerIn.addItem(surprise_candy);
 
 
-
-        return super.finishUsingItem(pStack, pLevel, pEntityLiving);
+        return new InteractionResultHolder<>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
 
     }
 }
