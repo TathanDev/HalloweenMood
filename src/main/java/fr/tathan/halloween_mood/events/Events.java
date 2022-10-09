@@ -4,7 +4,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import fr.tathan.halloween_mood.HalloweenMood;
 import fr.tathan.halloween_mood.commands.HalloweenRemoveDifficultyCommand;
 import fr.tathan.halloween_mood.commands.HalloweenSetDifficultyCommand;
-import fr.tathan.halloween_mood.configs.CommonConfig;
 import fr.tathan.halloween_mood.difficulty.LevelDifficulty;
 import fr.tathan.halloween_mood.difficulty.LevelDifficultyProvider;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
@@ -55,7 +54,6 @@ public class Events {
 
         Entity entity = event.getEntity();
         Level level = event.getLevel();
-
         ItemStack PUMPKIN = new ItemStack(Items.CARVED_PUMPKIN);
 
         PUMPKIN.enchant(Enchantments.BINDING_CURSE, 1);
@@ -87,7 +85,7 @@ public class Events {
        if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
            if (difficulty.isHalloween()) {
                 if (level.isNight()) {
-                    if (player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ZOMBIE) && !player.isCreative()) {
+                    if (player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ZOMBIE) && !player.isCreative() &&!player.isSpectator()) {
                         if (player.getBlockStateOn().getLightEmission() <= 2) {
 
                             player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 50, 1));
@@ -121,7 +119,7 @@ public class Events {
 
             trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
                     new ItemStack(Items.PUMPKIN, 2),
-                    SPEED_CANDY,10,2,0.02F));
+                    FIRE_CANDY,10,2,0.02F));
 
 
 
@@ -149,9 +147,6 @@ public class Events {
         ConfigCommand.register(event.getDispatcher());
 
     }
-
-
-
 
     public static Component tl(String text) {
         return Component.translatable("message." + HalloweenMood.MODID + text);

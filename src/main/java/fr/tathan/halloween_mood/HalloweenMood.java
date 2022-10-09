@@ -1,21 +1,14 @@
 package fr.tathan.halloween_mood;
 
 import com.mojang.logging.LogUtils;
-import fr.tathan.halloween_mood.configs.CommonConfig;
+
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
 import fr.tathan.halloween_mood.registries.SoundsRegistry;
-import fr.tathan.halloween_mood.registries.TabsRegistry;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -45,7 +38,6 @@ public class HalloweenMood {
 
 
         MinecraftForge.EVENT_BUS.register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC, "halloween_mood-common.toml");
 
     }
 
@@ -76,9 +68,8 @@ public class HalloweenMood {
          * REWORK "FEAR" SYSTEM
          * BETTER TEXTURES FOR CANDIES
          * MAKE CUSTOM HOUSES (Pumpkin, Witch Hat, etc...)
-         * NEW NAMES FOR CANDIES
          * RANDOM CANDY ITEM
-         * Change Main Menu (Take Screenshots etc...)
+         * CHANGES STRUCTURES (Str void, decorated houses, haunted houses...)
          * MAKE A COMPAT WITH THE OTHER MODS (Patchouli, Tips, etc...)
          * A WAY TO GET OUT THE PUMPKIN
          * ----------------------Finished------------------------
@@ -89,6 +80,7 @@ public class HalloweenMood {
          * Change the sugar cane texture ✅
          * STRUCTURES (BigPumpkin) ✅
          * Make the Moon less orange ✅
+         * NEW NAMES FOR CANDIES ✅
          */
 
     }

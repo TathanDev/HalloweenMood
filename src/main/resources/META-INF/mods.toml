@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[43,)"
-license="Hummmm"
+license="GPL-3.0 license"
 
 
 [[mods]]
@@ -8,7 +8,7 @@ modId="halloween_mood"
 version="${file.jarVersion}"
 displayName="Halloween Mood"
 #logoFile="logo.png"
-credits=""
+credits="Kaunpenjoe for his videos"
 authors="TATHAN"
 description='''
 This mod adds a Halloween/Autumn mood to Minecraft !
