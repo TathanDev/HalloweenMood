@@ -1,4 +1,4 @@
-package fr.tathan.halloween_mood.items.candies;
+package fr.tathan.halloween_mood.items;
 
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
 import net.minecraft.world.InteractionHand;
@@ -25,7 +25,7 @@ public class RandomCandy extends Item {
 
 
             Random rand = new Random();
-            int random_candy = rand.nextInt(4);
+            int random_candy = rand.nextInt(3);
             ItemStack surprise_candy = null;
 
 
