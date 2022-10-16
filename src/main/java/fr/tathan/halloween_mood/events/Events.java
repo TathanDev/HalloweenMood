@@ -148,9 +148,5 @@ public class Events {
 
     }
 
-    public static Component tl(String text) {
-        return Component.translatable("message." + HalloweenMood.MODID + text);
-    }
-
 
 }

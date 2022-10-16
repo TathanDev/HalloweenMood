@@ -1,0 +1,13 @@
+{
+  "name": "Blue Unicorn Lolipop",
+  "icon": "halloween_mood:fire_resistance_candy",
+  "category": "halloween_mood:candies",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "halloween_mood:water_breathing_candy",
+      "link_recipe": false,
+      "text": "At the first test, the Red Unicorn Lolipop seemed to work backwards. It allowed to breathe under water. So we kept it as is under the name of Blue Unicorn Lolipop."
+    }
+  ]
+}

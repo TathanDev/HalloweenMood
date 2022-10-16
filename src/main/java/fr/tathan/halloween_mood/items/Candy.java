@@ -8,11 +8,14 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
+
 public class Candy extends Item {
 
     MobEffect effect;
     int duration;
     int amplifier;
+
 
     //Maybe add some @Nullable to the parameters
     public Candy(Item.Properties properties, MobEffect pEffect, int pDuration, int pAmplifier) {
