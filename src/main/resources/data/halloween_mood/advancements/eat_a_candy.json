@@ -1,0 +1,38 @@
+{
+  "parent": "halloween_mood:halloween_book",
+  "criteria": {
+    "eat_candy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "halloween_mood:speed_candy",
+            "halloween_mood:fire_resistance_candy",
+            "halloween_mood:water_breathing_candy",
+            "halloween_mood:health_candy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "halloween_mood.advancement.eat_a_candy.descr"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "halloween_mood:speed_candy"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "halloween_mood.advancement.eat_a_candy.title"
+    }
+  },
+  "requirements": [
+    [
+      "eat_candy"
+    ]
+  ]
+}

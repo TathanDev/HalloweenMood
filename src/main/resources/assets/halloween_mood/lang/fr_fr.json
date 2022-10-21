@@ -12,14 +12,18 @@
 
   "itemGroup.halloween_tab": "Halloween Mood",
   "book.halloween_mood.candies.name": "Le Livre des Bonbons",
-  "book.halloween_mood.candies.landing_text" : "Bienvenue dans le livre des bonbons!$(br)C'est un peu comme le livre de rêves de tous les enfants.",
+  "book.halloween_mood.candies.landing_text": "Bienvenue dans le livre des bonbons!$(br)C'est un peu comme le livre de rêves de tous les enfants.",
   "book.halloween_mood.candies.category": "The Candies",
 
   "halloween.tip.a_lot_of_candies.title": "Beaucoup de Bonbons",
   "halloween.tip.a_lot_of_candies": "Il y a beaucoup de Bonbons avec tous des effets differents !",
 
   "halloween.tip.halloween_gamemode.title": "Difficulté Halloween",
-  "halloween.tip.halloween_gamemode": "Vous voulez plus de difficultés ? Essayez le gamemode Halloween !"
+  "halloween.tip.halloween_gamemode": "Vous voulez plus de difficultés ? Essayez le gamemode Halloween !",
 
+  "halloween_mood.advancement.eat_a_candy.title": "Waw, ce bonbon est trop bon !",
+  "halloween_mood.advancement.eat_a_candy.descr": "Tu viens de manger un super bonbon!",
 
+  "halloween_mood.advancement.eat_all_candy.title": "Ca fait beaucoup là, non ?!",
+  "halloween_mood.advancement.eat_all_candy.descr": "Tu as mangé tous les bonbons !"
 }

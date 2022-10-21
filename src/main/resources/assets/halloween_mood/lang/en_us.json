@@ -19,7 +19,11 @@
   "halloween.tip.a_lot_of_candies": "There is a lot of candies !",
 
   "halloween.tip.halloween_gamemode.title": "Halloween Difficulty",
-  "halloween.tip.halloween_gamemode": "Want more difficulties ? Try the Halloween Gamemode !"
+  "halloween.tip.halloween_gamemode": "Want more difficulties ? Try the Halloween Gamemode !",
 
+  "halloween_mood.advancement.eat_a_candy.title": "Damn, this is a good candy !",
+  "halloween_mood.advancement.eat_a_candy.descr": "You eat a very good Candy !",
 
+  "halloween_mood.advancement.eat_all_candy.title": "I'm full !",
+    "halloween_mood.advancement.eat_all_candy.descr": "You eat all the candies !"
 }

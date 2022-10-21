@@ -103,9 +103,11 @@ public class Events {
     public static void addCustomTrades(VillagerTradesEvent event) {
         if(event.getType() == VillagerProfession.SHEPHERD || event.getType() == VillagerProfession.ARMORER || event.getType() == VillagerProfession.BUTCHER || event.getType() == VillagerProfession.BUTCHER || event.getType() == VillagerProfession.CARTOGRAPHER || event.getType() == VillagerProfession.CLERIC || event.getType() == VillagerProfession.FARMER || event.getType() == VillagerProfession.FISHERMAN || event.getType() == VillagerProfession.FLETCHER || event.getType() == VillagerProfession.LEATHERWORKER || event.getType() == VillagerProfession.LIBRARIAN || event.getType() == VillagerProfession.MASON || event.getType() == VillagerProfession.NITWIT || event.getType() == VillagerProfession.TOOLSMITH || event.getType() == VillagerProfession.WEAPONSMITH) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
             ItemStack HEALTH_CANDY = new ItemStack(ItemsRegistry.HEALTH_CANDY.get(), 1);
             ItemStack SPEED_CANDY = new ItemStack(ItemsRegistry.SPEED_CANDY.get(), 1);
             ItemStack FIRE_CANDY = new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get(), 1);
+            ItemStack WATER_BREATHING_CANDY = new ItemStack(ItemsRegistry.WATER_BREATHING_CANDY.get(), 1);
 
             int villagerLevel = 1;
 
@@ -120,6 +122,11 @@ public class Events {
             trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
                     new ItemStack(Items.PUMPKIN, 2),
                     FIRE_CANDY,10,2,0.02F));
+
+            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(Items.PUMPKIN, 2),
+                    WATER_BREATHING_CANDY,10,2,0.02F));
+
 
 
 

@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "halloween_mood:candies_book"
+    },
+    "title": "Wait, it's all candy ?",
+    "description": "Theses candies look delicious!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "minecraft:textures/block/pumpkin_side.png"
+  },
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "background": "halloween_mood:textures/items/candies_book.png",
+  "rewards": {
+    "loot": [
+      "halloween_mood:candy_book_on_join"
+    ]
+  }
+}

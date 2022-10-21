@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "halloween_mood:fire_resistance_candy",
+    "halloween_mood:water_breathing_candy",
+    "halloween_mood:speed_candy",
+    "halloween_mood:health_candy"
+  ]
+}
