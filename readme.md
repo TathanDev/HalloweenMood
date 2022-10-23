@@ -6,7 +6,7 @@ This mod adds a Halloween/Autumn mood to Minecraft !
 You can trade pumpkins for candy from the villagers, but there are not "regular candies...
 You can also find some stuctures around the world and see well-decorated villagers' houses !
 
-If you are brave enough, you can turn the halloween difficulty !
+If you are brave enough, you can turn the Halloween difficulty !
 When it's activate, you will be afraid at night and have a pumkin in your head.
 
 

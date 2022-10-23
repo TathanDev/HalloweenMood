@@ -72,6 +72,7 @@ public class HalloweenMood {
          * MAKE CUSTOM HOUSES (Pumpkin, Witch Hat, etc...)
          * RANDOM CANDY ITEM
          * CHANGES STRUCTURES (Str void, decorated houses, haunted houses...)
+         * Add chests in the structures (with random items)
          * ----------------------Finished------------------------
          * TRADE WITH VILLAGERS FOR CANDIES ✅
          * MAKE A COMPAT WITH THE OTHER MODS (Patchouli, Tips, etc...) ✅

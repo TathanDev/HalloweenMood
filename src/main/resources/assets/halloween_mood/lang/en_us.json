@@ -4,6 +4,7 @@
   "item.halloween_mood.night_vision_candy": "Fire Candy",
   "item.halloween_mood.fire_resistance_candy": "Red Unicorn Lolipop",
   "item.halloween_mood.water_breathing_candy": "Blue Unicorn Lolipop",
+  "item.halloween_mood.candies_basket": "Candies Basket",
   "item.halloween_mood.candies_book": "The Candies Book",
 
   "message.halloween_mood.difficulty.true": "Now you are in the Halloween mood!",
@@ -25,5 +26,5 @@
   "halloween_mood.advancement.eat_a_candy.descr": "You eat a very good Candy !",
 
   "halloween_mood.advancement.eat_all_candy.title": "I'm full !",
-    "halloween_mood.advancement.eat_all_candy.descr": "You eat all the candies !"
+   "halloween_mood.advancement.eat_all_candy.descr": "You eat all the candies !"
 }

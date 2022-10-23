@@ -3,7 +3,7 @@ package fr.tathan.halloween_mood.registries;
 import fr.tathan.halloween_mood.HalloweenMood;
 import fr.tathan.halloween_mood.items.CandiesBook;
 import fr.tathan.halloween_mood.items.Candy;
-import fr.tathan.halloween_mood.items.RandomCandy;
+import fr.tathan.halloween_mood.items.CandyBasket;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -29,10 +29,10 @@ public class ItemsRegistry {
     public static final RegistryObject<Item> WATER_BREATHING_CANDY = ITEMS.register("water_breathing_candy",
             () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.WATER_BREATHING, 450, 0));
 
-    /**
-    public static final RegistryObject<Item> RANDOM_CANDY = ITEMS.register("random_candy",
-            () -> new RandomCandy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(16).durability(1)));
-    */
+
+    public static final RegistryObject<Item> RANDOM_CANDY = ITEMS.register("candies_basket",
+            () -> new CandyBasket(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(16).durability(1).defaultDurability(1)));
+
 
     public static final RegistryObject<Item> CANDIES_BOOK = ITEMS.register("candies_book",
             () -> new CandiesBook(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1)));
