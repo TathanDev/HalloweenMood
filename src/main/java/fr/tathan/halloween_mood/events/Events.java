@@ -108,6 +108,8 @@ public class Events {
             ItemStack SPEED_CANDY = new ItemStack(ItemsRegistry.SPEED_CANDY.get(), 1);
             ItemStack FIRE_CANDY = new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get(), 1);
             ItemStack WATER_BREATHING_CANDY = new ItemStack(ItemsRegistry.WATER_BREATHING_CANDY.get(), 1);
+            ItemStack CANDIES_BASKET = new ItemStack(ItemsRegistry.CANDIES_BOOK.get(), 1);
+
 
             int villagerLevel = 1;
 
@@ -127,6 +129,9 @@ public class Events {
                     new ItemStack(Items.PUMPKIN, 2),
                     WATER_BREATHING_CANDY,10,2,0.02F));
 
+            trades.get(3).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(Items.PUMPKIN, 2),
+                    CANDIES_BASKET,1,4,0.02F));
 
 
 
