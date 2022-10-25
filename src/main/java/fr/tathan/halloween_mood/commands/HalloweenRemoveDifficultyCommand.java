@@ -3,6 +3,7 @@ package fr.tathan.halloween_mood.commands;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import fr.tathan.halloween_mood.HalloweenMood;
+import fr.tathan.halloween_mood.config.CommonConfig;
 import fr.tathan.halloween_mood.difficulty.LevelDifficulty;
 import fr.tathan.halloween_mood.difficulty.LevelDifficultyProvider;
 import net.minecraft.commands.CommandSourceStack;
@@ -18,7 +19,8 @@ import net.minecraft.world.level.biome.Biome;
 public class HalloweenRemoveDifficultyCommand {
 
     public HalloweenRemoveDifficultyCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("halloween").then(Commands.literal("stop").executes((Command) -> {
+        boolean everyoneCanRunCommand = !CommonConfig.commandsNeedOp.get();
+        dispatcher.register(Commands.literal("halloween").then(Commands.literal("stop").requires(c -> everyoneCanRunCommand || c.hasPermission(2)).executes((Command) -> {
 
             return stopHalloween(Command.getSource());
         })));
