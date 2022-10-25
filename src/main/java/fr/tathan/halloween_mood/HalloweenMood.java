@@ -2,13 +2,16 @@ package fr.tathan.halloween_mood;
 
 import com.mojang.logging.LogUtils;
 
+import fr.tathan.halloween_mood.pack.PackLoader;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
 import fr.tathan.halloween_mood.registries.SoundsRegistry;
-import fr.tathan.halloween_mood.util.ModTags;
 import net.minecraft.client.Minecraft;
+import net.minecraft.server.packs.PackType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -29,6 +32,7 @@ public class HalloweenMood {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
         bus.addListener(this::commonSetup);
+        bus.addListener(this::discoverResourcePacks);
 
         ItemsRegistry.ITEMS.register(bus);
 
@@ -40,10 +44,17 @@ public class HalloweenMood {
 
         MinecraftForge.EVENT_BUS.register(this);
 
+        PackLoader.loadOnInitialStartup();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+    }
+
+    public void discoverResourcePacks(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            event.addRepositorySource(new PackLoader(ModList.get().getModFileById(MODID).getFile()));
+        }
     }
 
     @SubscribeEvent
