@@ -18,20 +18,20 @@ public class ItemsRegistry {
 
 
     public static final RegistryObject<Item> SPEED_CANDY = ITEMS.register("speed_candy",
-            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.MOVEMENT_SPEED, 450, 0));
+            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(32).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.MOVEMENT_SPEED, 450, 0));
 
     public static final RegistryObject<Item> HEALTH_CANDY = ITEMS.register("health_candy",
-            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.HEALTH_BOOST, 450, 0));
+            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(32).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.HEALTH_BOOST, 450, 0));
 
     public static final RegistryObject<Item> FIRE_RESISTANCE_CANDY = ITEMS.register("fire_resistance_candy",
-            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.FIRE_RESISTANCE, 450, 0));
+            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(32).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.FIRE_RESISTANCE, 450, 0));
 
     public static final RegistryObject<Item> WATER_BREATHING_CANDY = ITEMS.register("water_breathing_candy",
-            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.WATER_BREATHING, 450, 0));
+            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(32).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.WATER_BREATHING, 450, 0));
 
 
     public static final RegistryObject<Item> RANDOM_CANDY = ITEMS.register("candies_basket",
-            () -> new CandyBasket(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(16).durability(1).defaultDurability(1)));
+            () -> new CandyBasket(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1).durability(1).defaultDurability(1)));
 
 
     public static final RegistryObject<Item> CANDIES_BOOK = ITEMS.register("candies_book",
