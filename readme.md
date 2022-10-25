@@ -1,5 +1,8 @@
 # Halloween Mood
 
+[![CurseForge](http://cf.way2muchnoise.eu/full_687184_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/halloween_mood)
+
+
 ## Description
 This mod adds a Halloween/Autumn mood to Minecraft !
 
