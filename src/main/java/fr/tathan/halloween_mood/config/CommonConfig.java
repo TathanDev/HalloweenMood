@@ -14,7 +14,9 @@ public class CommonConfig {
 
     public static ForgeConfigSpec.ConfigValue<Boolean> commandsNeedOp;
 
+
     public static void init(ForgeConfigSpec.Builder builder) {
-        commandsNeedOp = builder.comment("Set this to true to let only ops enable or disable halloween difficulty. Useful for multiplayer servers.").define("commands_need_op", false);
+        commandsNeedOp = builder.comment("Set this to true to let only ops enable or disable halloween difficulty. Useful for multiplayer servers.").define("commands_need_op", true);
+
     }
 }

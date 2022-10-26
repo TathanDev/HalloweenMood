@@ -43,10 +43,6 @@ public class HalloweenMood {
 
         SoundsRegistry.SOUNDS.register(bus);
 
-
-
-
-
         MinecraftForge.EVENT_BUS.register(this);
 
         PackLoader.loadOnInitialStartup();
@@ -86,6 +82,7 @@ public class HalloweenMood {
          * FIX THE SERVER STARTING PROBLEM WITCH MIXIN
          * BETTER TEXTURES FOR CANDIES
          * MAKE CUSTOM HOUSES (Pumpkin, Witch Hat, etc...)
+         * Add Witch House for differents biome
          * ----------------------Finished------------------------
          * TRADE WITH VILLAGERS FOR CANDIES ✅
          * MAKE A COMPAT WITH THE OTHER MODS (Patchouli, Tips, etc...) ✅

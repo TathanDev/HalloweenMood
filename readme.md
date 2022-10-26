@@ -1,6 +1,6 @@
 # Halloween Mood
 
-[![CurseForge](http://cf.way2muchnoise.eu/full_687184_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/halloween_mood)
+[![CurseForge](http://cf.way2muchnoise.eu/full_687184_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/halloween-mood) [![CurseForge](http://cf.way2muchnoise.eu/versions/687184.svg)](https://www.curseforge.com/minecraft/mc-mods/halloween-mood/files/all?filter-status=1&filter-game-version=2020709689%3A9366)
 
 
 ## Description

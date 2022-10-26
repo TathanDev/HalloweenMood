@@ -1,6 +1,5 @@
 package fr.tathan.halloween_mood.events;
 
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import fr.tathan.halloween_mood.HalloweenMood;
 import fr.tathan.halloween_mood.commands.HalloweenRemoveDifficultyCommand;
 import fr.tathan.halloween_mood.commands.HalloweenSetDifficultyCommand;
@@ -9,7 +8,6 @@ import fr.tathan.halloween_mood.difficulty.LevelDifficultyProvider;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -25,10 +23,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
-import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
@@ -36,14 +31,11 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-import static net.minecraft.world.entity.npc.VillagerProfession.*;
 
 @Mod.EventBusSubscriber(modid = HalloweenMood.MODID)
 public class Events {
@@ -61,15 +53,19 @@ public class Events {
 
 
         if(level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
-            if (!level.isClientSide) {
-                if (entity instanceof ServerPlayer player) {
-                    if (player.getSlot(103).get().isEmpty() && !player.isCreative()) {
-                        player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
+            LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
+            if (difficulty.isHalloween()) {
+                if (!level.isClientSide) {
+                    if (entity instanceof ServerPlayer player) {
+                        if (player.getSlot(103).get().isEmpty() && !player.isCreative()) {
+                            player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
+                            difficulty.setHalloween();
+                        }
                     }
                 }
-
             }
         }
+
     }
 
     @SubscribeEvent
@@ -79,16 +75,17 @@ public class Events {
         Player player = event.player;
         Level level = player.getLevel();
         BlockPos pos = player.blockPosition();
-        LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
 
 
        if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
+           LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
            if (difficulty.isHalloween()) {
                 if (level.isNight()) {
-                    if (player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ZOMBIE) && !player.isCreative() &&!player.isSpectator()) {
+                    if (player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ZOMBIE) && !player.isCreative() &&!player.isSpectator())
                         if (player.getBlockStateOn().getLightEmission() <= 2) {
-
                             player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 50, 1));
+
+
                         }
                     }
                 }
@@ -96,7 +93,6 @@ public class Events {
 
         }
 
-    }
 
 
     @SubscribeEvent
@@ -157,6 +153,24 @@ public class Events {
         new HalloweenSetDifficultyCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
+
+    }
+
+    @SubscribeEvent
+    public static void PlayerChangedDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event){
+        Player player = event.getEntity();
+        Level level = player.getLevel();
+
+        LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
+
+        Level overworld = player.getLevel().getServer().overworld();
+        LevelDifficulty overworldDifficulty = overworld.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
+
+
+        if (overworldDifficulty.isHalloween()) {
+            difficulty.setHalloween();
+
+        }
 
     }
 

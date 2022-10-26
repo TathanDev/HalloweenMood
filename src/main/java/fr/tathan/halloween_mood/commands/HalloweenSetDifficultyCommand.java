@@ -18,6 +18,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.OverworldBiomeBuilder;
+import net.minecraft.world.level.dimension.LevelStem;
+
+import java.awt.*;
 
 public class HalloweenSetDifficultyCommand {
 
@@ -32,10 +36,35 @@ public class HalloweenSetDifficultyCommand {
     private int startHalloween(CommandSourceStack source)  throws CommandSyntaxException {
         ServerPlayer player = source.getPlayerOrException();
         ServerLevel level = source.getLevel();
-        Level level1 = player.getLevel();
+
+        LevelDifficulty netherDifficulty = player.getServer().getLevel(Level.NETHER).getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new CommandSyntaxException(null, null));
+        LevelDifficulty endDifficulty = player.getServer().getLevel(Level.END).getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new CommandSyntaxException(null, null));
+        LevelDifficulty overworldDifficulty = player.getServer().getLevel(Level.OVERWORLD).getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new CommandSyntaxException(null, null));
+
+
+        if (level == player.getServer().getLevel(Level.OVERWORLD)) {
+            netherDifficulty.setHalloween();
+
+            endDifficulty.setHalloween();
+
+        } else if (level == player.getServer().getLevel(Level.NETHER)){
+
+            overworldDifficulty.setHalloween();
+
+            endDifficulty.setHalloween();
+
+        } else if (level == player.getServer().getLevel(Level.END)) {
+
+            overworldDifficulty.setHalloween();
+
+            netherDifficulty.setHalloween();
+
+        }
 
         LevelDifficulty levelDifficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new CommandSyntaxException(null, null));
         levelDifficulty.setHalloween();
+
+
         level.setThunderLevel(1.0F);
 
 
@@ -53,7 +82,6 @@ public class HalloweenSetDifficultyCommand {
 
         level.setDayTime(14000);
 
-        level1.playSound(player, player.blockPosition(), SoundsRegistry.DEMONIC_LAUGH.get(), player.getSoundSource(), 1.0F, 1.0F);
 
 
         return 0;
