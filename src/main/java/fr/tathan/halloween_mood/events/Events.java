@@ -3,6 +3,7 @@ package fr.tathan.halloween_mood.events;
 import fr.tathan.halloween_mood.HalloweenMood;
 import fr.tathan.halloween_mood.commands.HalloweenRemoveDifficultyCommand;
 import fr.tathan.halloween_mood.commands.HalloweenSetDifficultyCommand;
+import fr.tathan.halloween_mood.config.CommonConfig;
 import fr.tathan.halloween_mood.difficulty.LevelDifficulty;
 import fr.tathan.halloween_mood.difficulty.LevelDifficultyProvider;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
@@ -23,6 +24,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -81,11 +83,14 @@ public class Events {
            LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
            if (difficulty.isHalloween()) {
                 if (level.isNight()) {
-                    if (player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ZOMBIE) && !player.isCreative() &&!player.isSpectator())
+                    if (!player.isCreative() &&!player.isSpectator())
                         if (player.getBlockStateOn().getLightEmission() <= 2) {
-                            player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 50, 1));
+                            if(player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ZOMBIE ) || player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ENDERMAN) || player.getBlockStateOn().isValidSpawn(level, pos, EntityType.PIGLIN))
 
+                                if(player.getLevel().dimension().equals(Level.END) && !CommonConfig.halloweenEnd.get()) return;
+                                if(player.getLevel().dimension().equals(Level.NETHER) && !CommonConfig.halloweenNether.get()) return;
 
+                                player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 45, 1));
                         }
                     }
                 }
@@ -105,6 +110,7 @@ public class Events {
             ItemStack FIRE_CANDY = new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get(), 1);
             ItemStack WATER_BREATHING_CANDY = new ItemStack(ItemsRegistry.WATER_BREATHING_CANDY.get(), 1);
             ItemStack CANDIES_BASKET = new ItemStack(ItemsRegistry.CANDIES_BOOK.get(), 1);
+            ItemStack NIGHT_VISION_CANDY = new ItemStack(ItemsRegistry.NIGHT_VISION_CANDY.get(), 1);
 
 
             int villagerLevel = 1;
@@ -124,6 +130,10 @@ public class Events {
             trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
                     new ItemStack(Items.PUMPKIN, 2),
                     WATER_BREATHING_CANDY,10,2,0.02F));
+
+            trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
+                    new ItemStack(Items.PUMPKIN, 2),
+                    NIGHT_VISION_CANDY,10,2,0.02F));
 
             trades.get(3).add((trader, rand) -> new MerchantOffer(
                     new ItemStack(Items.PUMPKIN, 2),

@@ -1,0 +1,13 @@
+{
+  "name": "Smagada BlueBerries",
+  "icon": "halloween_mood:night_vision_candy",
+  "category": "halloween_mood:candies",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "halloween_mood:night_vision_candy",
+      "link_recipe": false,
+      "text": "Ce bonbon est tellement toxique qu'il vous donne la vision nocturne ! Lorsque nous l'avons annoncé à notre patron, il a étonnamment accepté de le vendre."
+    }
+  ]
+}

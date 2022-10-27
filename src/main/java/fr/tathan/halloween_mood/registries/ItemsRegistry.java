@@ -29,6 +29,9 @@ public class ItemsRegistry {
     public static final RegistryObject<Item> WATER_BREATHING_CANDY = ITEMS.register("water_breathing_candy",
             () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(32).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.WATER_BREATHING, 450, 0));
 
+    public static final RegistryObject<Item> NIGHT_VISION_CANDY = ITEMS.register("night_vision_candy",
+            () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(32).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.NIGHT_VISION, 450, 0));
+
 
     public static final RegistryObject<Item> RANDOM_CANDY = ITEMS.register("candies_basket",
             () -> new CandyBasket(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1).durability(1).defaultDurability(1)));

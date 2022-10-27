@@ -21,11 +21,14 @@ public class CandyBasket extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player playerIn, InteractionHand handIn) {
 
         ItemStack itemstack = playerIn.getItemInHand(handIn);
-        itemstack.shrink(1);
 
-        giveMeRandomCandy(3, playerIn);
+        Random rand = new Random();
+        int candies = rand.nextInt(2,5);
 
-
+        if(!level.isClientSide) {
+            itemstack.shrink(1);
+            giveMeRandomCandy(candies, playerIn);
+        }
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
 
     }
@@ -34,7 +37,7 @@ public class CandyBasket extends Item {
 
         for (int i = 0; i <= numberOfTime; i++) {
             Random rand = new Random();
-            int random_candy = rand.nextInt(4);
+            int random_candy = rand.nextInt(5);
             ItemStack surprise_candy;
 
             if (random_candy == 0) {
@@ -43,8 +46,10 @@ public class CandyBasket extends Item {
                 surprise_candy = new ItemStack(ItemsRegistry.SPEED_CANDY.get());
             } else if (random_candy == 2) {
                 surprise_candy = new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get());
-            } else {
+            } else if (random_candy == 3) {
                 surprise_candy = new ItemStack(ItemsRegistry.WATER_BREATHING_CANDY.get());
+            } else {
+                surprise_candy = new ItemStack(ItemsRegistry.NIGHT_VISION_CANDY.get());
             }
 
             playerIn.addItem(surprise_candy);
