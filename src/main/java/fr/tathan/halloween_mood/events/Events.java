@@ -1,14 +1,18 @@
 package fr.tathan.halloween_mood.events;
 
+import com.natamus.pumpkillagersquest.util.Util;
 import fr.tathan.halloween_mood.HalloweenMood;
+import fr.tathan.halloween_mood.api.OnPlayerEatCandy;
 import fr.tathan.halloween_mood.commands.HalloweenRemoveDifficultyCommand;
 import fr.tathan.halloween_mood.commands.HalloweenSetDifficultyCommand;
 import fr.tathan.halloween_mood.config.CommonConfig;
 import fr.tathan.halloween_mood.difficulty.LevelDifficulty;
 import fr.tathan.halloween_mood.difficulty.LevelDifficultyProvider;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
+import fr.tathan.halloween_mood.util.ModTags;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,15 +20,16 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -33,10 +38,14 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 @Mod.EventBusSubscriber(modid = HalloweenMood.MODID)
@@ -77,18 +86,21 @@ public class Events {
         Player player = event.player;
         Level level = player.getLevel();
         BlockPos pos = player.blockPosition();
+        ItemStack mainHand = player.getMainHandItem();
+
+        ItemStack offHand = player.getOffhandItem();
 
 
-       if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
+
+
+        if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
            LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
            if (difficulty.isHalloween()) {
                 if (level.isNight()) {
                     if (!player.isCreative() &&!player.isSpectator())
-                        if (player.getBlockStateOn().getLightEmission() <= 2) {
-                            if(player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ZOMBIE ) || player.getBlockStateOn().isValidSpawn(level, pos, EntityType.ENDERMAN) || player.getBlockStateOn().isValidSpawn(level, pos, EntityType.PIGLIN))
-
-                                if(player.getLevel().dimension().equals(Level.END) && !CommonConfig.halloweenEnd.get()) return;
-                                if(player.getLevel().dimension().equals(Level.NETHER) && !CommonConfig.halloweenNether.get()) return;
+                        if (player.getBlockStateOn().getLightEmission() <= 2 || mainHand.is(ModTags.Items.CANDIES_TAG)  || offHand.is(ModTags.Items.CANDIES_TAG) ) {
+                                if(player.getLevel().dimension().equals(Level.END) && !CommonConfig.halloweenEnd.get()) { return; }
+                                if(player.getLevel().dimension().equals(Level.NETHER) && !CommonConfig.halloweenNether.get()) { return; }
 
                                 player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 45, 1));
                         }
@@ -185,4 +197,57 @@ public class Events {
     }
 
 
+    @SubscribeEvent
+    public static void OnPlayerEatCandy(OnPlayerEatCandy event) {
+
+        /**
+        Level level = event.getLevel();
+        Player player = event.getPlayer();
+
+        Random random = new Random();
+        int pourcent = random.nextInt(1, 101);
+
+        if (!level.isClientSide) {
+                if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
+                    LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
+                    if (difficulty.isHalloween()) {
+
+
+                    // Need to verify if we apply an enchantement for X  it work for Y
+
+                        if (ModList.get().isLoaded("maledicta")) {
+
+                            if (pourcent < 3) {
+
+                                int randomCurse = random.nextInt(4);
+                                ItemStack itemstack = player.getItemBySlot(EquipmentSlot.HEAD);
+                                //player.getSlot(103).get().getItem();
+
+
+                                switch (randomCurse) {
+                                    case 0:
+                                        itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKarma, 1);
+                                        break;
+                                    case 1:
+                                        itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfRandomness, 1);
+                                        break;
+                                    case 2:
+                                        itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKindness, 1);
+                                        break;
+                                }
+
+                            }
+                        }
+                    }
+
+            }
+
+        }
+*/
+    }
+
+
+
 }
+
+

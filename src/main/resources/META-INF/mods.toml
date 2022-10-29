@@ -1,11 +1,13 @@
 modLoader="javafml"
 loaderVersion="[43,)"
 license="GPL-3.0 license"
+issueTrackerURL="https://github.com/TathanDev/HalloweenMood/issues"
+
 
 
 [[mods]]
 modId="halloween_mood"
-version="${file.jarVersion}"
+version="1.0.7"
 displayName="Halloween Mood"
 logoFile="halloween_mood.png"
 credits="noeppi-noeppi, Kaunpenjoe for his videos"

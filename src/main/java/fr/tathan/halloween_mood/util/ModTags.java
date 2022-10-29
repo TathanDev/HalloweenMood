@@ -13,10 +13,23 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModTags {
 
+    public static void init() {
+        Items.init();
+    }
+
     public static class Items {
 
-        public static final TagKey<Item> CANDIES_TAG = TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(HalloweenMood.MODID, "candies"));
+        private static void init() {}
 
+        public static final TagKey<Item> CANDIES_TAG = tag("candies");
+        public static final TagKey<Item> AGAINST_FEAR = tag("against_fear");
+
+
+        private static TagKey<Item> tag(String name)
+        {
+            return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(HalloweenMood.MODID, name));
+        }
     }
+
 
 }

@@ -6,6 +6,7 @@ import fr.tathan.halloween_mood.pack.PackLoader;
 import fr.tathan.halloween_mood.config.CommonConfig;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
 import fr.tathan.halloween_mood.registries.SoundsRegistry;
+import fr.tathan.halloween_mood.util.ModTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.packs.PackType;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,6 +43,8 @@ public class HalloweenMood {
         ItemsRegistry.ITEMS.register(bus);
 
         SoundsRegistry.SOUNDS.register(bus);
+
+        ModTags.init();
 
         MinecraftForge.EVENT_BUS.register(this);
 

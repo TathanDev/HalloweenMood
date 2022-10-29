@@ -7,7 +7,7 @@ plugins {
 
 }
 
-version = '1.0.6'
+version = '1.0.7'
 group = 'fr.tathan.halloween_mood' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'halloween_mood'
 
@@ -107,6 +107,13 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
 
     maven { url 'https://maven.blamejared.com' }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
 
 }
 
@@ -114,6 +121,14 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.1.3'
 
     implementation fg.deobf("vazkii.patchouli:Patchouli:${patchouli_mc_version}-77")
+
+    implementation fg.deobf("curse.maven:maledicta-684453:4052170")
+    implementation fg.deobf("curse.maven:libx-412525:3955287")
+
+    implementation fg.deobf("curse.maven:pumpkinvillager-689943:4049715")
+    implementation fg.deobf("curse.maven:collective-342584:4035506")
+
+
 
 
 }
@@ -125,7 +140,7 @@ dependencies {
                     "Specification-Vendor"    : "halloween_mood",
                     "Specification-Version"   : "1", // We are version 1 of ourselves
                     "Implementation-Title"    : project.name,
-                    "Implementation-Version"  : "1.0.6",
+                    "Implementation-Version"  : "1.0.7",
                     "Implementation-Vendor"   : "halloween_mood",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
             ])
