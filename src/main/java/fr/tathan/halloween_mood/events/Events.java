@@ -62,7 +62,6 @@ public class Events {
         PUMPKIN.enchant(Enchantments.BINDING_CURSE, 1);
 
 
-
         if(level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
             LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
             if (difficulty.isHalloween()) {
@@ -90,15 +89,13 @@ public class Events {
 
         ItemStack offHand = player.getOffhandItem();
 
-
-
-
         if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
            LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
            if (difficulty.isHalloween()) {
                 if (level.isNight()) {
                     if (!player.isCreative() &&!player.isSpectator())
-                        if (player.getBlockStateOn().getLightEmission() <= 2 || mainHand.is(ModTags.Items.CANDIES_TAG)  || offHand.is(ModTags.Items.CANDIES_TAG) ) {
+                        if (player.getBlockStateOn().getLightEmission() <= 2 || mainHand.is(ModTags.Items.AGAINST_FEAR)  || offHand.is(ModTags.Items.AGAINST_FEAR) ) {
+
                                 if(player.getLevel().dimension().equals(Level.END) && !CommonConfig.halloweenEnd.get()) { return; }
                                 if(player.getLevel().dimension().equals(Level.NETHER) && !CommonConfig.halloweenNether.get()) { return; }
 
@@ -200,40 +197,47 @@ public class Events {
     @SubscribeEvent
     public static void OnPlayerEatCandy(OnPlayerEatCandy event) {
 
-        /**
         Level level = event.getLevel();
         Player player = event.getPlayer();
 
-        Random random = new Random();
-        int pourcent = random.nextInt(1, 101);
+        Random random1 = new Random();
+        int pourcent = random1.nextInt(1, 101);
 
         if (!level.isClientSide) {
                 if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
                     LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
                     if (difficulty.isHalloween()) {
 
+                        if (ModList.get().isLoaded("maledicta") && CommonConfig.maledictaIntegration.get()) {
+                            if (CommonConfig.maledictaIntegrationPourcent.get() < 3) {
 
-                    // Need to verify if we apply an enchantement for X  it work for Y
+                                Random random2 = new Random();
+                                int randomSlot = random2.nextInt(1, 104);
+                                ItemStack itemstack = player.getSlot(randomSlot).get();
 
-                        if (ModList.get().isLoaded("maledicta")) {
+                                if (itemstack.isEmpty()) {
+                                    HalloweenMood.LOGGER.info("Empty Slot");
+                                    return;
+                                }
 
-                            if (pourcent < 3) {
-
-                                int randomCurse = random.nextInt(4);
-                                ItemStack itemstack = player.getItemBySlot(EquipmentSlot.HEAD);
-                                //player.getSlot(103).get().getItem();
-
+                                Random random3 = new Random();
+                                int randomCurse = random3.nextInt(1, 4);
 
                                 switch (randomCurse) {
-                                    case 0:
-                                        itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKarma, 1);
-                                        break;
-                                    case 1:
-                                        itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfRandomness, 1);
-                                        break;
-                                    case 2:
-                                        itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKindness, 1);
-                                        break;
+                                    case 0 :
+                                            itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKarma, 1);
+                                            HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Karma");
+                                            break;
+                                    case 1 :
+                                            itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfRandomness, 1);
+                                            HalloweenMood.LOGGER.info("We curse" + itemstack.getDisplayName().getString() + " with Curse of Randomness");
+                                            break;
+
+                                    case 2 :
+                                             itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKindness, 1);
+                                             HalloweenMood.LOGGER.info("We curse" + itemstack.getDisplayName().getString() + " with Curse of Kindness");
+                                             break;
+
                                 }
 
                             }
@@ -243,7 +247,7 @@ public class Events {
             }
 
         }
-*/
+
     }
 
 

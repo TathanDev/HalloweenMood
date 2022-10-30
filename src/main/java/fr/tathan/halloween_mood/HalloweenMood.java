@@ -29,7 +29,7 @@ public class HalloweenMood {
 
 
     public static final String MODID = "halloween_mood";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public HalloweenMood()
     {
