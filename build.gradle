@@ -7,7 +7,7 @@ plugins {
 
 }
 
-version = '1.0.7'
+version = '1.0.8'
 group = 'fr.tathan.halloween_mood' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'halloween_mood'
 
@@ -140,7 +140,7 @@ dependencies {
                     "Specification-Vendor"    : "halloween_mood",
                     "Specification-Version"   : "1", // We are version 1 of ourselves
                     "Implementation-Title"    : project.name,
-                    "Implementation-Version"  : "1.0.7",
+                    "Implementation-Version"  : "1.0.8",
                     "Implementation-Vendor"   : "halloween_mood",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
             ])

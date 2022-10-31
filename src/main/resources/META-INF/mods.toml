@@ -7,7 +7,7 @@ issueTrackerURL="https://github.com/TathanDev/HalloweenMood/issues"
 
 [[mods]]
 modId="halloween_mood"
-version="1.0.7"
+version="1.0.8"
 displayName="Halloween Mood"
 logoFile="halloween_mood.png"
 credits="noeppi-noeppi, Kaunpenjoe for his videos"

@@ -18,6 +18,8 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ibm.icu.text.PluralRules.Operand.v;
+
 @Mod.EventBusSubscriber(modid = HalloweenMood.MODID)
 public class VillageAdditions {
 
@@ -89,6 +91,11 @@ public class VillageAdditions {
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/taiga/houses"),
                 "halloween_mood:witch_house", 250);
+
+        addBuildingToPool(templatePoolRegistry, processorListRegistry,
+               new ResourceLocation("minecraft:village/desert/houses"),
+                "halloween_mood:witch_house_desert", 250);
+
 
 
         //addBuildingToPool(templatePoolRegistry, processorListRegistry,

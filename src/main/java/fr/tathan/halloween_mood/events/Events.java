@@ -94,10 +94,13 @@ public class Events {
            if (difficulty.isHalloween()) {
                 if (level.isNight()) {
                     if (!player.isCreative() &&!player.isSpectator())
-                        if (player.getBlockStateOn().getLightEmission() <= 2 || mainHand.is(ModTags.Items.AGAINST_FEAR)  || offHand.is(ModTags.Items.AGAINST_FEAR) ) {
+                        if (player.getBlockStateOn().getLightEmission() <= 2 ) {
 
                                 if(player.getLevel().dimension().equals(Level.END) && !CommonConfig.halloweenEnd.get()) { return; }
                                 if(player.getLevel().dimension().equals(Level.NETHER) && !CommonConfig.halloweenNether.get()) { return; }
+                                if (mainHand.is(ModTags.Items.AGAINST_FEAR)  || offHand.is(ModTags.Items.AGAINST_FEAR)) {
+                                    return;
+                                }
 
                                 player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 45, 1));
                         }
@@ -209,7 +212,7 @@ public class Events {
                     if (difficulty.isHalloween()) {
 
                         if (ModList.get().isLoaded("maledicta") && CommonConfig.maledictaIntegration.get()) {
-                            if (CommonConfig.maledictaIntegrationPourcent.get() < 3) {
+                            if (pourcent <= CommonConfig.maledictaIntegrationPourcent.get()) {
 
                                 Random random2 = new Random();
                                 int randomSlot = random2.nextInt(1, 104);
@@ -230,12 +233,12 @@ public class Events {
                                             break;
                                     case 1 :
                                             itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfRandomness, 1);
-                                            HalloweenMood.LOGGER.info("We curse" + itemstack.getDisplayName().getString() + " with Curse of Randomness");
+                                            HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Randomness");
                                             break;
 
                                     case 2 :
                                              itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKindness, 1);
-                                             HalloweenMood.LOGGER.info("We curse" + itemstack.getDisplayName().getString() + " with Curse of Kindness");
+                                             HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Kindness");
                                              break;
 
                                 }
