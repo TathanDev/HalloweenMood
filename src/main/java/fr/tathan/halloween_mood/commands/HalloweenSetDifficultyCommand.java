@@ -70,8 +70,11 @@ public class HalloweenSetDifficultyCommand {
 
         ItemStack PUMPKIN = new ItemStack(Items.CARVED_PUMPKIN);
 
-        PUMPKIN.enchant(Enchantments.BINDING_CURSE, 1);
-        player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
+        if(CommonConfig.pumpkinOnHead.get()) {
+            PUMPKIN.enchant(Enchantments.BINDING_CURSE, 1);
+            player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
+        }
+
 
         if(level.getAllEntities() instanceof Player player1) {
             player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);

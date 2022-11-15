@@ -33,6 +33,7 @@ public class HalloweenRemoveDifficultyCommand {
         levelDifficulty.removeHalloween();
 
         player.displayClientMessage(DIFFICULTY_FALSE, false);
+
         player.setItemSlot(EquipmentSlot.HEAD, ItemStack.EMPTY);
         level.setDayTime(1000);
         level.setThunderLevel(0.0F);

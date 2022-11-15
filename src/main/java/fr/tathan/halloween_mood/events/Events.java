@@ -68,7 +68,11 @@ public class Events {
                 if (!level.isClientSide) {
                     if (entity instanceof ServerPlayer player) {
                         if (player.getSlot(103).get().isEmpty() && !player.isCreative()) {
-                            player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
+
+                            if(CommonConfig.pumpkinOnHead.get()) {
+                                player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
+                            }
+
                             difficulty.setHalloween();
                         }
                     }
