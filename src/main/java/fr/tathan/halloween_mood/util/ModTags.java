@@ -2,6 +2,7 @@ package fr.tathan.halloween_mood.util;
 
 import fr.tathan.halloween_mood.HalloweenMood;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -27,7 +28,7 @@ public class ModTags {
 
         private static TagKey<Item> tag(String name)
         {
-            return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(HalloweenMood.MODID, name));
+            return TagKey.create(Registries.ITEM, new ResourceLocation(HalloweenMood.MODID, name));
         }
     }
 

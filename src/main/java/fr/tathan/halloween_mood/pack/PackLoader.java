@@ -1,5 +1,6 @@
 package fr.tathan.halloween_mood.pack;
 
+/**
 import fr.tathan.halloween_mood.HalloweenMood;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
@@ -28,12 +29,12 @@ public class PackLoader implements RepositorySource {
     private final PackResources resources;
 
     public PackLoader(IModFile modFile) {
-        this.resources = new PathPackResources("Halloween Mood Extra", modFile.findResource("extra"));
+        this.resources = new PathPackResources("Halloween Mood Extra", true, modFile.findResource("extra"));
     }
 
     @Override
-    public void loadPacks(Consumer<Pack> packConsumer, Pack.PackConstructor factory) {
-        Pack pack = Pack.create(PACK_ID, false, () -> this.resources, factory, Pack.Position.TOP, PackSource.BUILT_IN);
+    public void loadPacks(Consumer<Pack> packConsumer, Pack factory) {
+        Pack pack = Pack.create(PACK_ID, false, resources,Component.literal("Halloween Mood"), factory, Pack.Position.TOP, PackSource.BUILT_IN);
         packConsumer.accept(pack);
         
         Pack marker = factory.create(DISABLED_PACK_ID_MARKER, Component.literal("Halloween Mood Marker"), true, EmptyPackResources::new, new PackMetadataSection(Component.empty(), SharedConstants.RESOURCE_PACK_FORMAT), Pack.Position.BOTTOM, PackSource.BUILT_IN, true);
@@ -48,4 +49,10 @@ public class PackLoader implements RepositorySource {
             }
         });
     }
+
+    @Override
+    public void loadPacks(Consumer<Pack> pOnLoad) {
+        loadPacks(pOnLoad, Pack.));
+    }
 }
+*/

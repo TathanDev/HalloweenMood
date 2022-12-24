@@ -46,7 +46,7 @@ public class CandyBasket extends Item {
                 surprise_candy = new ItemStack(ItemsRegistry.SPEED_CANDY.get());
             } else if (random_candy == 2) {
                 surprise_candy = new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get());
-            } else if (random_candy == 3) {
+            } else if (random_candy  == 3) {
                 surprise_candy = new ItemStack(ItemsRegistry.WATER_BREATHING_CANDY.get());
             } else {
                 surprise_candy = new ItemStack(ItemsRegistry.NIGHT_VISION_CANDY.get());

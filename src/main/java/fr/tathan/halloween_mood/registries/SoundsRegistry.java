@@ -9,12 +9,10 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class SoundsRegistry   {
 
-
+        /**
         public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, HalloweenMood.MODID);
 
-        /**
-         * SOUNDS
-         */
-        public static final RegistryObject<SoundEvent> DEMONIC_LAUGH = SOUNDS.register("demonic_laugh", () -> new SoundEvent(new ResourceLocation(HalloweenMood.MODID, "demonic_laugh")));
 
+        public static final RegistryObject<SoundEvent> DEMONIC_LAUGH = SOUNDS.register("demonic_laugh", () -> new SoundEvent(new ResourceLocation(HalloweenMood.MODID, "demonic_laugh")));
+        */
 }

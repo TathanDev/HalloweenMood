@@ -1,5 +1,5 @@
 package fr.tathan.halloween_mood.items;
-
+/**
 import fr.tathan.halloween_mood.HalloweenMood;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -45,3 +45,4 @@ public class CandiesBook extends Item {
 
 
 }
+*/

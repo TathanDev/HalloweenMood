@@ -1,6 +1,5 @@
 package fr.tathan.halloween_mood.events;
 
-import com.natamus.pumpkillagersquest.util.Util;
 import fr.tathan.halloween_mood.HalloweenMood;
 import fr.tathan.halloween_mood.api.OnPlayerEatCandy;
 import fr.tathan.halloween_mood.commands.HalloweenRemoveDifficultyCommand;
@@ -24,14 +23,13 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -47,8 +45,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static fr.tathan.halloween_mood.HalloweenMood.MODID;
 
-@Mod.EventBusSubscriber(modid = HalloweenMood.MODID)
+
+@Mod.EventBusSubscriber(modid = MODID)
 public class Events {
 
 
@@ -125,7 +125,7 @@ public class Events {
             ItemStack SPEED_CANDY = new ItemStack(ItemsRegistry.SPEED_CANDY.get(), 1);
             ItemStack FIRE_CANDY = new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get(), 1);
             ItemStack WATER_BREATHING_CANDY = new ItemStack(ItemsRegistry.WATER_BREATHING_CANDY.get(), 1);
-            ItemStack CANDIES_BASKET = new ItemStack(ItemsRegistry.CANDIES_BOOK.get(), 1);
+            //ItemStack CANDIES_BASKET = new ItemStack(ItemsRegistry.CANDIES_BOOK.get(), 1);
             ItemStack NIGHT_VISION_CANDY = new ItemStack(ItemsRegistry.NIGHT_VISION_CANDY.get(), 1);
 
 
@@ -151,10 +151,10 @@ public class Events {
                     new ItemStack(Items.PUMPKIN, 2),
                     NIGHT_VISION_CANDY,10,2,0.02F));
 
-            trades.get(3).add((trader, rand) -> new MerchantOffer(
+           /** trades.get(3).add((trader, rand) -> new MerchantOffer(
                     new ItemStack(Items.PUMPKIN, 2),
                     CANDIES_BASKET,1,4,0.02F));
-
+            */
 
 
         }
@@ -164,7 +164,7 @@ public class Events {
     @SubscribeEvent
     public static void onAttachCapabilitiesLevel(AttachCapabilitiesEvent<Level> event) {
         if (!event.getObject().getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
-            event.addCapability(new ResourceLocation(HalloweenMood.MODID, "level_difficulty"), new LevelDifficultyProvider());
+            event.addCapability(new ResourceLocation(MODID, "level_difficulty"), new LevelDifficultyProvider());
         }
 
     }
@@ -201,6 +201,7 @@ public class Events {
     }
 
 
+    /**
     @SubscribeEvent
     public static void OnPlayerEatCandy(OnPlayerEatCandy event) {
 
@@ -256,6 +257,28 @@ public class Events {
         }
 
     }
+
+    */
+
+    @SubscribeEvent
+    public void onCreativeModeTabRegister(CreativeModeTabEvent.Register event)
+    {
+        CreativeModeTab HALLOWEEN_MOOD = event.registerCreativeModeTab(new ResourceLocation(MODID, "halloween_mood_tab"), List.of(), List.of(CreativeModeTabs.SPAWN_EGGS), builder -> builder
+                .icon(() -> new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get()))
+                .title(Component.literal("Halloween Mood"))
+                .withLabelColor(0x0000FF)
+                .displayItems((features, output, hasPermissions) -> {
+                    //Items contenus dans cet onglet
+                    output.accept(ItemsRegistry.FIRE_RESISTANCE_CANDY.get());
+                    output.accept(ItemsRegistry.SPEED_CANDY.get());
+                    output.accept(ItemsRegistry.WATER_BREATHING_CANDY.get());
+                    output.accept(ItemsRegistry.NIGHT_VISION_CANDY.get());
+                    output.accept(ItemsRegistry.RANDOM_CANDY.get());
+                }));
+    }
+
+
+
 
 
 

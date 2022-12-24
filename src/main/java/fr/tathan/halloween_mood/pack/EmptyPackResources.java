@@ -1,5 +1,5 @@
 package fr.tathan.halloween_mood.pack;
-
+/**
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.PackType;
@@ -58,3 +58,4 @@ public class EmptyPackResources implements PackResources {
         
     }
 }
+ */
