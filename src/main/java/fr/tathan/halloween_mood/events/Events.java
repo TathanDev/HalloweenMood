@@ -260,8 +260,7 @@ public class Events {
 
     */
 
-    @SubscribeEvent
-    public void onCreativeModeTabRegister(CreativeModeTabEvent.Register event)
+    public static void onCreativeModeTabRegister(CreativeModeTabEvent.Register event)
     {
         CreativeModeTab HALLOWEEN_MOOD = event.registerCreativeModeTab(new ResourceLocation(MODID, "halloween_mood_tab"), List.of(), List.of(CreativeModeTabs.SPAWN_EGGS), builder -> builder
                 .icon(() -> new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get()))

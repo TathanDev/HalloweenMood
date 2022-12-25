@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 
 //import fr.tathan.halloween_mood.pack.PackLoader;
 import fr.tathan.halloween_mood.config.CommonConfig;
+import fr.tathan.halloween_mood.events.Events;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
 import fr.tathan.halloween_mood.registries.SoundsRegistry;
 import fr.tathan.halloween_mood.util.ModTags;
@@ -44,6 +45,10 @@ public class HalloweenMood {
 
         //SoundsRegistry.SOUNDS.register(bus);
 
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(Events::onCreativeModeTabRegister);
+
+
+
         ModTags.init();
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -75,9 +80,6 @@ public class HalloweenMood {
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("Hello " + Minecraft.getInstance().getUser().getName());
             LOGGER.info("Your client get Halloweened !");
-
-
-
 
         }
 
