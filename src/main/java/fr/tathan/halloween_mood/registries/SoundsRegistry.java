@@ -15,6 +15,6 @@ public class SoundsRegistry   {
         /**
          * SOUNDS
          */
-        public static final RegistryObject<SoundEvent> DEMONIC_LAUGH = SOUNDS.register("demonic_laugh", () -> new SoundEvent(new ResourceLocation(HalloweenMood.MODID, "demonic_laugh")));
+        public static final RegistryObject<SoundEvent> DEMONIC_LAUGH = SOUNDS.register("demonic_laugh", () -> SoundEvent.createFixedRangeEvent(new ResourceLocation(HalloweenMood.MODID, "demonic_laugh"), 1));
 
 }

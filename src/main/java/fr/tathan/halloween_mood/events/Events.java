@@ -1,6 +1,5 @@
 package fr.tathan.halloween_mood.events;
 
-import com.natamus.pumpkillagersquest.util.Util;
 import fr.tathan.halloween_mood.HalloweenMood;
 import fr.tathan.halloween_mood.api.OnPlayerEatCandy;
 import fr.tathan.halloween_mood.commands.HalloweenRemoveDifficultyCommand;
@@ -199,66 +198,6 @@ public class Events {
         }
 
     }
-
-
-    @SubscribeEvent
-    public static void OnPlayerEatCandy(OnPlayerEatCandy event) {
-
-        Level level = event.getLevel();
-        Player player = event.getPlayer();
-
-        Random random1 = new Random();
-        int pourcent = random1.nextInt(1, 101);
-
-        if (!level.isClientSide) {
-                if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
-                    LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
-                    if (difficulty.isHalloween()) {
-
-                        if (ModList.get().isLoaded("maledicta") && CommonConfig.maledictaIntegration.get()) {
-                            if (pourcent <= CommonConfig.maledictaIntegrationPourcent.get()) {
-
-                                Random random2 = new Random();
-                                int randomSlot = random2.nextInt(1, 104);
-                                ItemStack itemstack = player.getSlot(randomSlot).get();
-
-                                if (itemstack.isEmpty()) {
-                                    HalloweenMood.LOGGER.info("Empty Slot");
-                                    return;
-                                }
-
-                                Random random3 = new Random();
-                                int randomCurse = random3.nextInt(1, 4);
-
-                                switch (randomCurse) {
-                                    case 0 :
-                                            itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKarma, 1);
-                                            HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Karma");
-                                            break;
-                                    case 1 :
-                                            itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfRandomness, 1);
-                                            HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Randomness");
-                                            break;
-
-                                    case 2 :
-                                             itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKindness, 1);
-                                             HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Kindness");
-                                             break;
-
-                                }
-
-                            }
-                        }
-                    }
-
-            }
-
-        }
-
-    }
-
-
-
 }
 
 

@@ -2,15 +2,17 @@ package fr.tathan.halloween_mood;
 
 import com.mojang.logging.LogUtils;
 
-import fr.tathan.halloween_mood.pack.PackLoader;
 import fr.tathan.halloween_mood.config.CommonConfig;
 import fr.tathan.halloween_mood.registries.ItemsRegistry;
 import fr.tathan.halloween_mood.registries.SoundsRegistry;
+import fr.tathan.halloween_mood.registries.TabsRegistry;
 import fr.tathan.halloween_mood.util.ModTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddPackFindersEvent;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -38,7 +40,7 @@ public class HalloweenMood {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
         bus.addListener(this::commonSetup);
-        bus.addListener(this::discoverResourcePacks);
+        bus.addListener(this::addCreative);
 
         ItemsRegistry.ITEMS.register(bus);
 
@@ -48,17 +50,10 @@ public class HalloweenMood {
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        PackLoader.loadOnInitialStartup();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-    }
-
-    public void discoverResourcePacks(AddPackFindersEvent event) {
-        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            event.addRepositorySource(new PackLoader(ModList.get().getModFileById(MODID).getFile()));
-        }
     }
 
     @SubscribeEvent
@@ -67,14 +62,27 @@ public class HalloweenMood {
         LOGGER.info("Your server get Halloweened !");
     }
 
+    private void addCreative(CreativeModeTabEvent.BuildContents event) {
+        if(event.getTab() == TabsRegistry.HALLOWEEN_TAB) {
+            event.accept(ItemsRegistry.CANDIES_BOOK);
+            event.accept(ItemsRegistry.NIGHT_VISION_CANDY);
+            event.accept(ItemsRegistry.FIRE_RESISTANCE_CANDY);
+            event.accept(ItemsRegistry.SPEED_CANDY);
+            event.accept(ItemsRegistry.WATER_BREATHING_CANDY);
+            event.accept(ItemsRegistry.HEALTH_CANDY);
+            event.accept(ItemsRegistry.RANDOM_CANDY);
+        }
+
+    }
+
+
+
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("Hello " + Minecraft.getInstance().getUser().getName());
             LOGGER.info("Your client get Halloweened !");
-
-
 
 
         }

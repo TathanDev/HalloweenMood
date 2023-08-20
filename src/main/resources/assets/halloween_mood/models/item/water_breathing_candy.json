@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "halloween_mood:items/water_breathing_candy"
+    "layer0": "halloween_mood:item/water_breathing_candy"
   }
 }
