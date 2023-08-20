@@ -29,21 +29,16 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
 
-import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static fr.tathan.halloween_mood.HalloweenMood.MODID;
 
@@ -87,7 +82,7 @@ public class Events {
 
 
         Player player = event.player;
-        Level level = player.getLevel();
+        Level level = player.level();
         BlockPos pos = player.blockPosition();
         ItemStack mainHand = player.getMainHandItem();
 
@@ -100,8 +95,8 @@ public class Events {
                     if (!player.isCreative() &&!player.isSpectator())
                         if (player.getBlockStateOn().getLightEmission() <= 2 ) {
 
-                                if(player.getLevel().dimension().equals(Level.END) && !CommonConfig.halloweenEnd.get()) { return; }
-                                if(player.getLevel().dimension().equals(Level.NETHER) && !CommonConfig.halloweenNether.get()) { return; }
+                                if(player.level().dimension().equals(Level.END) && !CommonConfig.halloweenEnd.get()) { return; }
+                                if(player.level().dimension().equals(Level.NETHER) && !CommonConfig.halloweenNether.get()) { return; }
                                 if (mainHand.is(ModTags.Items.AGAINST_FEAR)  || offHand.is(ModTags.Items.AGAINST_FEAR)) {
                                     return;
                                 }
@@ -185,11 +180,11 @@ public class Events {
     @SubscribeEvent
     public static void PlayerChangedDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event){
         Player player = event.getEntity();
-        Level level = player.getLevel();
+        Level level = player.level();
 
         LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
 
-        Level overworld = player.getLevel().getServer().overworld();
+        Level overworld = player.level().getServer().overworld();
         LevelDifficulty overworldDifficulty = overworld.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
 
 
@@ -199,87 +194,6 @@ public class Events {
         }
 
     }
-
-
-    /**
-    @SubscribeEvent
-    public static void OnPlayerEatCandy(OnPlayerEatCandy event) {
-
-        Level level = event.getLevel();
-        Player player = event.getPlayer();
-
-        Random random1 = new Random();
-        int pourcent = random1.nextInt(1, 101);
-
-        if (!level.isClientSide) {
-                if (level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).isPresent()) {
-                    LevelDifficulty difficulty = level.getCapability(LevelDifficultyProvider.LEVEL_DIFFICULTY).orElseThrow(() -> new IllegalStateException("Damn! An Error ?! This is Spooky !!"));
-                    if (difficulty.isHalloween()) {
-
-                        if (ModList.get().isLoaded("maledicta") && CommonConfig.maledictaIntegration.get()) {
-                            if (pourcent <= CommonConfig.maledictaIntegrationPourcent.get()) {
-
-                                Random random2 = new Random();
-                                int randomSlot = random2.nextInt(1, 104);
-                                ItemStack itemstack = player.getSlot(randomSlot).get();
-
-                                if (itemstack.isEmpty()) {
-                                    HalloweenMood.LOGGER.info("Empty Slot");
-                                    return;
-                                }
-
-                                Random random3 = new Random();
-                                int randomCurse = random3.nextInt(1, 4);
-
-                                switch (randomCurse) {
-                                    case 0 :
-                                            itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKarma, 1);
-                                            HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Karma");
-                                            break;
-                                    case 1 :
-                                            itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfRandomness, 1);
-                                            HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Randomness");
-                                            break;
-
-                                    case 2 :
-                                             itemstack.enchant(de.melanx.maledicta.registration.ModEnchantments.curseOfKindness, 1);
-                                             HalloweenMood.LOGGER.info("We curse " + itemstack.getDisplayName().getString() + " with Curse of Kindness");
-                                             break;
-
-                                }
-
-                            }
-                        }
-                    }
-
-            }
-
-        }
-
-    }
-
-    */
-
-    public static void onCreativeModeTabRegister(CreativeModeTabEvent.Register event)
-    {
-        CreativeModeTab HALLOWEEN_MOOD = event.registerCreativeModeTab(new ResourceLocation(MODID, "halloween_mood_tab"), List.of(), List.of(CreativeModeTabs.SPAWN_EGGS), builder -> builder
-                .icon(() -> new ItemStack(ItemsRegistry.FIRE_RESISTANCE_CANDY.get()))
-                .title(Component.literal("Halloween Mood"))
-                .withLabelColor(0x0000FF)
-                .displayItems((features, output, hasPermissions) -> {
-                    //Items contenus dans cet onglet
-                    output.accept(ItemsRegistry.FIRE_RESISTANCE_CANDY.get());
-                    output.accept(ItemsRegistry.SPEED_CANDY.get());
-                    output.accept(ItemsRegistry.WATER_BREATHING_CANDY.get());
-                    output.accept(ItemsRegistry.NIGHT_VISION_CANDY.get());
-                    output.accept(ItemsRegistry.RANDOM_CANDY.get());
-                }));
-    }
-
-
-
-
-
 
 }
 

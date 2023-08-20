@@ -1,6 +1,7 @@
 package fr.tathan.halloween_mood.registries;
 
 import fr.tathan.halloween_mood.HalloweenMood;
+import fr.tathan.halloween_mood.items.CandiesBook;
 import fr.tathan.halloween_mood.items.Candy;
 import fr.tathan.halloween_mood.items.CandyBasket;
 import net.minecraft.world.effect.MobEffects;
@@ -36,12 +37,12 @@ public class ItemsRegistry {
             () -> new CandyBasket(new Item.Properties().stacksTo(1).durability(1).defaultDurability(1)));
 
 
-    /**
+
     public static final RegistryObject<Item> CANDIES_BOOK = ITEMS.register("candies_book",
-            () -> new CandiesBook(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1)));
+            () -> new CandiesBook(new Item.Properties()));
 
 
-
+/**
     public static final RegistryObject<Item> test = ITEMS.register("test",
             () -> new Candy(new Item.Properties().tab(TabsRegistry.HALLOWEEN_TAB).stacksTo(1).food(new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build()), MobEffects.MOVEMENT_SPEED, 10000, 30));
     */
