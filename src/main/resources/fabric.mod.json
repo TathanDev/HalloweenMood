@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "halloween_mood",
+	"version": "${version}",
+	"name": "Halloween Mood",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/halloween_mood/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"fr.tathan.halloween_mood.HalloweenMood"
+		],
+		"client": [
+          "fr.tathan.halloween_mood.HalloweenMoodClient"
+		]
+	},
+	"mixins": [
+		"halloween_mood.mixins.json",
+		{
+			"config": "halloween_mood.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.14.23",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
