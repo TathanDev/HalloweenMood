@@ -3,17 +3,18 @@
 	"id": "halloween_mood",
 	"version": "${version}",
 	"name": "Halloween Mood",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This mod adds a Halloween/Autumn mood to Minecraft !\nIf you are brave enough, you can turn the halloween difficulty on...\n!",
 	"authors": [
-		"Me!"
+		"TATHAN"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/halloween-mood",
+		"sources": "https://github.com/TathanDev/HalloweenMood"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/halloween_mood/icon.png",
 	"environment": "*",
+
 	"entrypoints": {
 		"main": [
 			"fr.tathan.halloween_mood.HalloweenMood"
