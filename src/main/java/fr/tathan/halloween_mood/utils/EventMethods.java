@@ -1,5 +1,6 @@
 package fr.tathan.halloween_mood.utils;
 
+import fr.tathan.halloween_mood.HalloweenMood;
 import fr.tathan.halloween_mood.config.HalloweenConfig;
 import fr.tathan.halloween_mood.events.EntityJoinWorldEvent;
 import fr.tathan.halloween_mood.events.PlayerTickEvent;
@@ -27,7 +28,7 @@ public class EventMethods {
         if (isHalloween) {
                 if (!level.isClientSide) {
                     if (player.getSlot(103).get().isEmpty() && !player.isCreative()) {
-                        if(HalloweenConfig.CONFIG.pumpkinOnHead) {
+                        if(HalloweenMood.CONFIG.pumpkinOnHead) {
                             player.setItemSlot(EquipmentSlot.HEAD, PUMPKIN);
                         }
                     }
@@ -51,8 +52,8 @@ public class EventMethods {
                  if (!player.isCreative() &&!player.isSpectator())
                      if (player.getBlockStateOn().getLightEmission() <= 2 ) {
 
-                         if(player.level().dimension().equals(Level.END) && !HalloweenConfig.CONFIG.halloweenEnd) { return; }
-                         if(player.level().dimension().equals(Level.NETHER) && !HalloweenConfig.CONFIG.halloweenNether) { return; }
+                         if(player.level().dimension().equals(Level.END) && !HalloweenMood.CONFIG.halloweenEnd) { return; }
+                         if(player.level().dimension().equals(Level.NETHER) && !HalloweenMood.CONFIG.halloweenNether) { return; }
                          if (mainHand.is(TagsRegistry.AGAINST_FEAR)  || offHand.is(TagsRegistry.AGAINST_FEAR)) {
                              return;
                          }

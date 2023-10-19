@@ -20,7 +20,9 @@
 			"fr.tathan.halloween_mood.HalloweenMood"
 		],
 		"client": [
-          "fr.tathan.halloween_mood.HalloweenMoodClient"
+          "fr.tathan.halloween_mood.client.HalloweenMoodClient"
+		],
+		"modmenu": [
 		]
 	},
 	"mixins": [

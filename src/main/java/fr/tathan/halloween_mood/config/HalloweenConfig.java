@@ -1,29 +1,23 @@
 package fr.tathan.halloween_mood.config;
 
-import me.shedaniel.autoconfig.AutoConfig;
+import fr.tathan.halloween_mood.HalloweenMood;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
-import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 
+@Config.Gui.Background("minecraft:textures/block/pumpkin.png")
 @Config(name = "halloween_mood")
-@Config.Gui.Background("minecraft:textures/block/carved_pumpkin.png")
 public class HalloweenConfig implements ConfigData {
 
-    public static HalloweenConfig CONFIG;
-    @ConfigEntry.Category("general")
-    public static boolean commandsNeedOp;
     public static boolean pumpkinOnHead;
 
+    @Comment("Should the player have fear in the nether ?")
     public static boolean halloweenNether;
+    @Comment("Should the player have fear in the End ?")
     public static boolean halloweenEnd;
-    public static boolean maledictaIntegration;
-    public static int maledictaIntegrationPourcent;
 
-    public static void init() {
-        AutoConfig.register(HalloweenConfig.class, GsonConfigSerializer::new);
-        CONFIG = AutoConfig.getConfigHolder(HalloweenConfig.class).getConfig();
+    @Override
+    public void validatePostLoad() throws ValidationException {
+        HalloweenMood.LOGGER.debug("REGISTERING CONFIG");
     }
-
-
 }
