@@ -4,5 +4,6 @@
   "pamphlet": true,
   "book_texture": "halloween_mood:textures/gui/candies_book.png",
   "show_progress": false,
-  "generate_book": false
+  "generate_book": false,
+  "use_resource_pack": true
 }
