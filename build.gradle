@@ -3,6 +3,8 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id "com.modrinth.minotaur" version "2.+"
+
 
 
 }
@@ -133,7 +135,7 @@ dependencies {
                     "Specification-Vendor"    : "halloween_mood",
                     "Specification-Version"   : "1", // We are version 1 of ourselves
                     "Implementation-Title"    : project.name,
-                    "Implementation-Version"  : "1.0.9",
+                    "Implementation-Version"  : version,
                     "Implementation-Vendor"   : "halloween_mood",
                     "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
             ])
@@ -158,3 +160,15 @@ dependencies {
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
     }
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN") // Remember to have the MODRINTH_TOKEN environment variable set or else this will fail - just make sure it stays private!
+    projectId = "halloween-mood"
+    versionName = "[Forge] Halloween Mood ${version}"// This can be the project ID or the slug. Either will work!
+    versionNumber = "${version}" // You don't need to set this manually. Will fail if Modrinth has this version already
+    versionType = "release" // This is the default -- can also be `beta` or `alpha`
+    uploadFile = jar // With Loom, this MUST be set to `remapJar` instead of `jar`!
+    gameVersions = ["1.20.1"] // Must be an array, even with only one version
+    loaders = ["forge"] // Must also be an array - no need to specify this if you're using Loom or ForgeGradle
+
+}
