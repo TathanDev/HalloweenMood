@@ -18,6 +18,7 @@ public class CommonConfig {
 
     public static ForgeConfigSpec.BooleanValue commandsNeedOp;
     public static ForgeConfigSpec.BooleanValue pumpkinOnHead;
+    public static ForgeConfigSpec.IntValue witchHouseWeight;
 
     public static ForgeConfigSpec.BooleanValue halloweenNether;
     public static ForgeConfigSpec.BooleanValue halloweenEnd;
@@ -30,6 +31,7 @@ public class CommonConfig {
         builder.push("Miscellaneous");
         commandsNeedOp = builder.comment("Set this to true to let only ops enable or disable halloween difficulty. Useful for multiplayer servers.").define("CommandsNeedOp", true);
         pumpkinOnHead = builder.comment("Set this to true to set a pumpkin on the head of the player who is in Halloween Difficulty.").define("PumpkinOnHead", true);
+        witchHouseWeight = builder.comment("Set this to the weight of the witch house in villages.").defineInRange("WitchHouseWeight", 250, 1, 1000);
         builder.pop();
 
         builder.push("Difficulty");

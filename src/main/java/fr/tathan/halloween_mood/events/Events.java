@@ -114,9 +114,6 @@ public class Events {
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
         if(CommonConfig.tradersList.get().contains(event.getType().name()) ) {
-            HalloweenMood.LOGGER.error(CommonConfig.tradersList.get().toString());
-
-            //if(event.getType() == VillagerProfession.SHEPHERD || event.getType() == VillagerProfession.ARMORER || event.getType() == VillagerProfession.BUTCHER || event.getType() == VillagerProfession.BUTCHER || event.getType() == VillagerProfession.CARTOGRAPHER || event.getType() == VillagerProfession.CLERIC || event.getType() == VillagerProfession.FARMER || event.getType() == VillagerProfession.FISHERMAN || event.getType() == VillagerProfession.FLETCHER || event.getType() == VillagerProfession.LEATHERWORKER || event.getType() == VillagerProfession.LIBRARIAN || event.getType() == VillagerProfession.MASON || event.getType() == VillagerProfession.NITWIT || event.getType() == VillagerProfession.TOOLSMITH || event.getType() == VillagerProfession.WEAPONSMITH) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
             ItemStack HEALTH_CANDY = new ItemStack(ItemsRegistry.HEALTH_CANDY.get(), 1);
@@ -147,9 +144,6 @@ public class Events {
             trades.get(villagerLevel).add((trader, rand) -> new MerchantOffer(
                     new ItemStack(Items.PUMPKIN, 2),
                     NIGHT_VISION_CANDY,10,2,0.02F));
-
-            HalloweenMood.LOGGER.error(event.getType().name() + "  " + event.getType().toString() + "  ");
-
         }
     }
 

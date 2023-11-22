@@ -3,6 +3,7 @@ package fr.tathan.halloween_mood.world.village;
 
 import com.mojang.datafixers.util.Pair;
 import fr.tathan.halloween_mood.HalloweenMood;
+import fr.tathan.halloween_mood.config.CommonConfig;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -18,8 +19,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.ibm.icu.text.PluralRules.Operand.v;
 
 @Mod.EventBusSubscriber(modid = HalloweenMood.MODID)
 public class VillageAdditions {
@@ -83,19 +82,19 @@ public class VillageAdditions {
        /** Haunted House */
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/plains/houses"),
-                "halloween_mood:witch_house", 250);
+                "halloween_mood:witch_house", CommonConfig.witchHouseWeight.get());
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/savanna/houses"),
-                "halloween_mood:witch_house", 250);
+                "halloween_mood:witch_house", CommonConfig.witchHouseWeight.get());
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                 new ResourceLocation("minecraft:village/taiga/houses"),
-                "halloween_mood:witch_house", 250);
+                "halloween_mood:witch_house", CommonConfig.witchHouseWeight.get());
 
         addBuildingToPool(templatePoolRegistry, processorListRegistry,
                new ResourceLocation("minecraft:village/desert/houses"),
-                "halloween_mood:witch_house_desert", 250);
+                "halloween_mood:witch_house_desert", CommonConfig.witchHouseWeight.get());
 
 
 
