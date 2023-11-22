@@ -1,6 +1,10 @@
 package fr.tathan.halloween_mood.config;
 
+import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraftforge.common.ForgeConfigSpec;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class CommonConfig {
 
@@ -12,14 +16,13 @@ public class CommonConfig {
         CONFIG = CONFIG_BUILDER.build();
     }
 
-    public static ForgeConfigSpec.ConfigValue<Boolean> commandsNeedOp;
-    public static ForgeConfigSpec.ConfigValue<Boolean> pumpkinOnHead;
+    public static ForgeConfigSpec.BooleanValue commandsNeedOp;
+    public static ForgeConfigSpec.BooleanValue pumpkinOnHead;
 
-    public static ForgeConfigSpec.ConfigValue<Boolean> halloweenNether;
-    public static ForgeConfigSpec.ConfigValue<Boolean> halloweenEnd;
-    public static ForgeConfigSpec.ConfigValue<Boolean> maledictaIntegration;
-    public static ForgeConfigSpec.ConfigValue<Integer> maledictaIntegrationPourcent;
-
+    public static ForgeConfigSpec.BooleanValue halloweenNether;
+    public static ForgeConfigSpec.BooleanValue halloweenEnd;
+    public static ForgeConfigSpec.ConfigValue<Integer> villagerLevelForTrades;
+    public static ForgeConfigSpec.ConfigValue<List<? extends String>> tradersList;
 
 
 
@@ -32,6 +35,11 @@ public class CommonConfig {
         builder.push("Difficulty");
         halloweenNether = builder.comment("Set this to true if you want to be 'afraid' in the nether.").define("HalloweenInNether", true);
         halloweenEnd = builder.comment("Set this to true if you want to be 'afraid' in the end.").define("HalloweenInEnd", true);
+        builder.pop();
 
+        builder.push("Villager");
+        tradersList = builder.comment("Which villagers should trade halloween loot").defineList("TradersList", Arrays.asList("weaponsmith", "toolsmith", "armorer", "butcher", "leatherworker", "cartographer", "fisherman", "cleric", "farmer", "fletcher", "librarian", "mason", "nitwit", "shepherd"), entry -> true);
+        villagerLevelForTrades = builder.comment("Set this to the minimum level for trades with villagers.").defineInRange("VillagerLevelForTrades", 1, 1, 5);
+        builder.pop();
     }
 }
