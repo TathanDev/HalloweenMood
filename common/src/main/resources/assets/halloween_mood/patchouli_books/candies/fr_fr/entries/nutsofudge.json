@@ -1,0 +1,13 @@
+{
+  "name": "Nutsofudge",
+  "icon": "halloween_mood:speed_candy",
+  "category": "halloween_mood:candies",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "halloween_mood:speed_candy",
+      "link_recipe": false,
+      "text": "C'est le caramel le plus délicieux de tous les temps ! Mais, c'est tout ? Non ! C'est aussi un speed candy ! C'est un peu comme la potion de vitesse, mais c'est un bonbon ! (donc c'est mieux)"
+    }
+  ]
+}

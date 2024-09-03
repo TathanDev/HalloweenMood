@@ -1,0 +1,77 @@
+{
+  "parent": "halloween_mood:eat_a_candy",
+  "criteria": {
+    "speed_candy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "halloween_mood:speed_candy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "fire_resistance_candy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "halloween_mood:fire_resistance_candy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "water_breathing_candy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "halloween_mood:water_breathing_candy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "health_candy": {
+      "conditions": {
+        "item": {
+          "items": [
+            "halloween_mood:health_candy"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "halloween_mood.advancement.eat_all_candy.descr"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "halloween_mood:water_breathing_candy"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "halloween_mood.advancement.eat_all_candy.title"
+    }
+  },
+  "requirements": [
+    [
+      "speed_candy"
+    ],
+    [
+      "health_candy"
+    ],
+    [
+      "water_breathing_candy"
+    ],
+    [
+      "fire_resistance_candy"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

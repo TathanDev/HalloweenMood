@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "halloween_mood:item/water_breathing_candy"
+  }
+}

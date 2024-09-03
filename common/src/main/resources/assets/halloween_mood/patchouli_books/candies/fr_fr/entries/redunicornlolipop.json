@@ -1,0 +1,13 @@
+{
+  "name": "Red Unicorn Lolipop",
+  "icon": "halloween_mood:fire_resistance_candy",
+  "category": "halloween_mood:candies",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "halloween_mood:fire_resistance_candy",
+      "link_recipe": false,
+      "text": "Tu es dans une forêt. Tu es perdu. Tu as faim. Tu as soif. Tu es fatigué. Tu as peur. Tu es seul. Tu es dans la lave. Mais, tu as une sucette licorne rouge ! Tu la manges et tu peux maintenant nager comme un poisson dans la lave !"
+    }
+  ]
+}
