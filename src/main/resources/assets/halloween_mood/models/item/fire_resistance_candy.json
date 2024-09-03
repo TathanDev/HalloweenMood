@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "halloween_mood:item/fire_resistance_candy"
-  }
-}
