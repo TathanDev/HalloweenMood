@@ -1,6 +1,8 @@
 plugins {
     id 'multiloader-loader'
     id 'net.neoforged.moddev'
+    id "me.modmuss50.mod-publish-plugin" version "0.6.3"
+
 }
 
 neoForge {
@@ -33,6 +35,28 @@ neoForge {
         "${mod_id}" {
             sourceSet sourceSets.main
         }
+    }
+}
+
+publishMods {
+    file = file("../neoforge/build/libs/halloween_mood-neoforge-${minecraft_version}-${version}.jar")
+    changelog = file("../changelog.md").getText('UTF-8')
+    type = STABLE
+    modLoaders.add("neoforge")
+    displayName = "[Neoforge] Halloween Mood ${version}"
+
+    curseforge {
+        projectId = "687184"
+        projectSlug = "halloween-mood" // Required for discord webhook
+        accessToken = providers.environmentVariable("CURSEFORGE_API_KEY")
+        minecraftVersions.add("${minecraft_version}")
+        javaVersions.add(JavaVersion.VERSION_21)
+    }
+
+    modrinth {
+        projectId = "b2s0tKbF"
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        minecraftVersions.add("${minecraft_version}")
     }
 }
 

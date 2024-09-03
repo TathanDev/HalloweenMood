@@ -1,6 +1,8 @@
 plugins {
     id 'multiloader-loader'
     id 'fabric-loom'
+    id "me.modmuss50.mod-publish-plugin" version "0.6.3"
+
 }
 dependencies {
     minecraft "com.mojang:minecraft:${minecraft_version}"
@@ -33,5 +35,27 @@ loom {
             ideConfigGenerated(true)
             runDir('runs/server')
         }
+    }
+}
+
+publishMods {
+    file = file("../fabric/build/libs/halloween_mood-fabric-${minecraft_version}-${version}.jar")
+    changelog = file("../changelog.md").getText('UTF-8')
+    type = STABLE
+    modLoaders.add("fabric")
+    displayName = "[Fabric] Halloween Mood ${version}"
+
+    curseforge {
+        projectId = "687184"
+        projectSlug = "halloween-mood" // Required for discord webhook
+        accessToken = providers.environmentVariable("CURSEFORGE_API_KEY")
+        minecraftVersions.add("${minecraft_version}")
+        javaVersions.add(JavaVersion.VERSION_21)
+    }
+
+    modrinth {
+        projectId = "b2s0tKbF"
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        minecraftVersions.add("${minecraft_version}")
     }
 }
