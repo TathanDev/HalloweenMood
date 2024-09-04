@@ -2,6 +2,7 @@ package fr.tathan.halloween_mood.platform.services;
 
 import fr.tathan.halloween_mood.HalloweenMoodCommon;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -54,6 +55,9 @@ public interface IPlatformHelper {
     <T extends Item> Supplier<T> registerItem(String id, Supplier<T> item);
 
     <T extends CreativeModeTab> Supplier<T> registerCreativeTab(String id, Supplier<T> tab);
+
+    SimpleParticleType registerSimpleParticle(String id, boolean overTime);
+
 
     CreativeModeTab.Builder newCreativeTabBuilder();
 }

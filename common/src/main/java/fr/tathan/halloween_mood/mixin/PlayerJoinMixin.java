@@ -23,6 +23,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Optional;
+
 @Mixin(PlayerList.class)
 public class PlayerJoinMixin {
 
@@ -30,9 +32,9 @@ public class PlayerJoinMixin {
     private void placeNewPlayer(Connection pConnection, ServerPlayer pPlayer, CommonListenerCookie pCookie, CallbackInfo ci) {
         Level level = pPlayer.level();
         ItemStack PUMPKIN = new ItemStack(Items.CARVED_PUMPKIN);
-        Holder<Enchantment> enchantmentHolder = level.holderLookup(Registries.ENCHANTMENT).getOrThrow(ResourceKey.create(Registries.ENCHANTMENT, Enchantments.BINDING_CURSE.registry()));
+        Optional<Holder.Reference<Enchantment>> enchantmentHolder = level.holderLookup(Registries.ENCHANTMENT).get(ResourceKey.create(Registries.ENCHANTMENT, Enchantments.BINDING_CURSE.registry()));
 
-        PUMPKIN.enchant(enchantmentHolder, 1);
+        enchantmentHolder.ifPresent(enchantmentReference -> PUMPKIN.enchant(enchantmentReference, 1));
 
         if(level.getGameRules().getBoolean(GameruleRegistry.HALLOWEEN_GAMERULE)) {
 

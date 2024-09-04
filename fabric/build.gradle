@@ -15,10 +15,9 @@ dependencies {
 }
 
 loom {
-    def aw = project(':common').file("src/main/resources/${mod_id}.accesswidener")
-    if (aw.exists()) {
-        accessWidenerPath.set(aw)
-    }
+    def aw = project(':common').file("src/main/resources/halloween_mood.accesswidener")
+    accessWidenerPath.set(aw)
+
     mixin {
         defaultRefmapName.set("${mod_id}.refmap.json")
     }
@@ -38,12 +37,18 @@ loom {
     }
 }
 
+dependencies {
+    compileOnly group: 'com.google.auto.service', name: 'auto-service', version: '1.0.1'
+    annotationProcessor group: 'com.google.auto.service', name: 'auto-service', version: '1.0.1'
+
+}
+
 publishMods {
-    file = file("../fabric/build/libs/halloween_mood-fabric-${minecraft_version}-${version}.jar")
+    file = file("../fabric/build/libs/halloween_mood-fabric-${minecraft_version}-${mod_version}.jar")
     changelog = file("../changelog.md").getText('UTF-8')
     type = STABLE
     modLoaders.add("fabric")
-    displayName = "[Fabric] Halloween Mood ${version}"
+    displayName = "[Fabric] Halloween Mood ${mod_version}"
 
     curseforge {
         projectId = "687184"

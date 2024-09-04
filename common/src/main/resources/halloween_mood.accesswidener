@@ -4,3 +4,7 @@ accessible method net/minecraft/world/level/GameRules$BooleanValue create (Z)Lne
 accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool templates Lit/unimi/dsi/fastutil/objects/ObjectArrayList;
 accessible field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
 mutable field net/minecraft/world/level/levelgen/structure/pools/StructureTemplatePool rawTemplates Ljava/util/List;
+accessible method net/minecraft/core/particles/ParticleTypes register (Ljava/lang/String;Z)Lnet/minecraft/core/particles/SimpleParticleType;
+accessible class net/minecraft/client/particle/CherryParticle
+accessible class net/minecraft/client/particle/ParticleEngine$SpriteParticleRegistration
+accessible class net/minecraft/core/particles/SimpleParticleType

@@ -74,6 +74,11 @@ dependencies {
 
     // Forge's hack fix
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+
+    compileOnly group: 'com.google.auto.service', name: 'auto-service', version: '1.0.1'
+    annotationProcessor group: 'com.google.auto.service', name: 'auto-service', version: '1.0.1'
+
+
 }
 
 publishing {

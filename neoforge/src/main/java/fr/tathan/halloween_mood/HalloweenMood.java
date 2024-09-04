@@ -3,6 +3,8 @@ package fr.tathan.halloween_mood;
 
 import fr.tathan.halloween_mood.common.world.village.VillageAdditions;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -20,6 +22,8 @@ public class HalloweenMood {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, HalloweenMoodCommon.MOD_ID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, HalloweenMoodCommon.MOD_ID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
+            DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, HalloweenMoodCommon.MOD_ID);
 
 
     public HalloweenMood(IEventBus eventBus) {
@@ -33,6 +37,7 @@ public class HalloweenMood {
         HalloweenMoodCommon.init();
         ITEMS.register(eventBus);
         CREATIVE_TAB.register(eventBus);
+        PARTICLE_TYPES.register(eventBus);
     }
 
 

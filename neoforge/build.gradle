@@ -38,12 +38,19 @@ neoForge {
     }
 }
 
+dependencies {
+    compileOnly group: 'com.google.auto.service', name: 'auto-service', version: '1.0.1'
+    annotationProcessor group: 'com.google.auto.service', name: 'auto-service', version: '1.0.1'
+
+}
+
 publishMods {
-    file = file("../neoforge/build/libs/halloween_mood-neoforge-${minecraft_version}-${version}.jar")
+    file = file("../neoforge/build/libs/halloween_mood-neoforge-${minecraft_version}-${mod_version}.jar")
     changelog = file("../changelog.md").getText('UTF-8')
     type = STABLE
     modLoaders.add("neoforge")
-    displayName = "[Neoforge] Halloween Mood ${version}"
+    displayName = "[Neoforge] Halloween Mood ${mod_version}"
+
 
     curseforge {
         projectId = "687184"
@@ -51,6 +58,7 @@ publishMods {
         accessToken = providers.environmentVariable("CURSEFORGE_API_KEY")
         minecraftVersions.add("${minecraft_version}")
         javaVersions.add(JavaVersion.VERSION_21)
+
     }
 
     modrinth {

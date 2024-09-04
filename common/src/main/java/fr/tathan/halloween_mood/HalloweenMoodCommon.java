@@ -4,12 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.ToNumberPolicy;
 import fr.tathan.halloween_mood.common.config.CustomConfig;
-import fr.tathan.halloween_mood.common.registries.GameruleRegistry;
-import fr.tathan.halloween_mood.common.registries.ItemsRegistry;
-import fr.tathan.halloween_mood.common.registries.TabsRegistry;
-import fr.tathan.halloween_mood.platform.Services;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.Items;
+import fr.tathan.halloween_mood.common.registries.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +20,8 @@ public class HalloweenMoodCommon {
 
     public static void init() {
 
+        TagsRegistry.init();
+        ParticleRegistry.init();
         CustomConfig.init();
         ItemsRegistry.init();
         GameruleRegistry.init();

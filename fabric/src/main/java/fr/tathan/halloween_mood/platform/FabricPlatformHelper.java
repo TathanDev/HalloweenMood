@@ -3,8 +3,10 @@ package fr.tathan.halloween_mood.platform;
 import fr.tathan.halloween_mood.HalloweenMoodCommon;
 import fr.tathan.halloween_mood.platform.services.IPlatformHelper;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.Registry;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -48,6 +50,11 @@ public class FabricPlatformHelper implements IPlatformHelper {
     @Override
     public <T extends CreativeModeTab> Supplier<T> registerCreativeTab(String id, Supplier<T> tab) {
         return registerSupplier(BuiltInRegistries.CREATIVE_MODE_TAB, id, tab);
+    }
+
+    @Override
+    public SimpleParticleType registerSimpleParticle(String id, boolean overTime) {
+        return FabricParticleTypes.simple();
     }
 
     @Override
