@@ -32,6 +32,7 @@ public class CustomConfig {
         addEntry("halloweenNether", new ConfigEntry<>(true, "Set this to true if you want to be 'afraid' in the nether."));
         addEntry("halloweenEnd ", new ConfigEntry<>(true, "Set this to true if you want to be 'afraid' in the end."));
         addEntry("witchHouseWeight ", new ConfigEntry<>(250, "Set this to the weight of the witch house in villages."));
+        addEntry("fallingLeaves ", new ConfigEntry<>(true, "Set this to true if you want to have falling Leaves."));
 
     }
 

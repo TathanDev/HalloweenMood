@@ -40,7 +40,7 @@ public class PlayerTickMixin {
                             return;
                         }
 
-                        player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 45, 1));
+                        player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 35, 1));
                     }
             }
 

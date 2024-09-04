@@ -1,6 +1,7 @@
 package fr.tathan.halloween_mood.mixin;
 
 import fr.tathan.halloween_mood.HalloweenMoodCommon;
+import fr.tathan.halloween_mood.common.config.CustomConfig;
 import fr.tathan.halloween_mood.common.registries.ParticleRegistry;
 import fr.tathan.halloween_mood.common.registries.TagsRegistry;
 import net.minecraft.core.BlockPos;
